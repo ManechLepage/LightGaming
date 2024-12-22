@@ -15,6 +15,8 @@ func _ready() -> void:
 func shoot():
 	if guns[current_gun].can_shoot():
 		guns[current_gun].shoot()
+		var bullet: BulletDisplay = bullet_display.instantiate()
+		bullet.load_bullet(guns[current_gun].bullet)
 
 func switch_gun_left():
 	pass
