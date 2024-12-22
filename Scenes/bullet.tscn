@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://rb6n7356h37"]
+[gd_scene load_steps=6 format=3 uid="uid://rb6n7356h37"]
 
 [ext_resource type="Script" path="res://Scripts/bullet_display.gd" id="1_377rx"]
+[ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/bullet1.aseprite" id="2_tu2bu"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="2_u05yo"]
 
-[node name="Bullet" type="Node2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2mfcy"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p7ep"]
+radius = 8.06226
+
+[node name="Bullet" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_2mfcy")
+gravity_scale = 0.0
 script = ExtResource("1_377rx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tu2bu")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, 0)
 texture = ExtResource("2_u05yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3p7ep")

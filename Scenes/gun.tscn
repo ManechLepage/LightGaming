@@ -12,3 +12,6 @@ bullet_display = ExtResource("2_4u44f")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
 texture = ExtResource("2_ugn0s")
+
+[node name="ShotPosition" type="Node2D" parent="."]
+position = Vector2(15, 0)

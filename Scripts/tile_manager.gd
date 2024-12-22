@@ -26,6 +26,7 @@ func update_player():
 func update_gun():
 	gun.position = get_player_position()
 	gun.rotation = (get_global_mouse_position() - gun.position).normalized().angle()
+	gun.update_gun()
 
 func _input(event: InputEvent) -> void:
 	var new_position: Vector2i = player_position

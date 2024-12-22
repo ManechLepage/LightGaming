@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=8 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="TileSet" uid="uid://b3d1sbaj86vhp" path="res://Resources/TileSet/Main.tres" id="2_gy4u0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cg5vye7h1dhpb" path="res://Scenes/gun.tscn" id="4_3axs8"]
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="5_502xh"]
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="6_uxpxk"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -32,3 +33,13 @@ zoom = Vector2(4, 4)
 unique_name_in_owner = true
 position = Vector2(12, -13)
 guns = Array[ExtResource("5_502xh")]([ExtResource("6_uxpxk")])
+
+[node name="Bullets" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("7_atwix")
+
+[connection signal="shoot" from="InputManager" to="Gun" method="shoot"]
+
+[editable path="Gun"]

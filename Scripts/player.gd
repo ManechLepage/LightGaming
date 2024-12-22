@@ -6,7 +6,9 @@ extends Node2D
 
 var current_gun: int
 
+@onready var bullets: Node2D = %Bullets
 @onready var sprite: Sprite2D = $Sprite
+@onready var shot_position: Node2D = $ShotPosition
 
 func _ready() -> void:
 	for gun in guns:
@@ -16,7 +18,8 @@ func shoot():
 	if guns[current_gun].can_shoot():
 		guns[current_gun].shoot()
 		var bullet: BulletDisplay = bullet_display.instantiate()
-		bullet.load_bullet(guns[current_gun].bullet)
+		bullets.add_child(bullet)
+		bullet.load_bullet(guns[current_gun].bullet, shot_position.global_position, rotation)
 
 func switch_gun_left():
 	pass
