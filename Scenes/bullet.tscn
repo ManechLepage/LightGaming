@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="2_u05yo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2mfcy"]
+friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p7ep"]

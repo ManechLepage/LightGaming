@@ -6,10 +6,10 @@ extends Node2D
 
 @onready var gun: GunDisplay = %Gun
 
-@export var player_position: Vector2i
+var player_position: Vector2i
 
 func _ready() -> void:
-	pass
+	player_position = player.get_used_cells()[0]
 
 func _process(delta: float) -> void:
 	update_player()

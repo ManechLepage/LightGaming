@@ -15,5 +15,5 @@ func load_bullet(_bullet: Bullet, _position: Vector2, angle: float) -> void:
 	sprite_2d.texture = bullet.sprite
 	position = _position
 	rotation = angle
-	velocity = Vector2(cos(rotation), sin(rotation)) * bullet.speed * 15
+	velocity = Vector2(cos(rotation), sin(rotation)) * bullet.speed * 25
 	linear_velocity = velocity
