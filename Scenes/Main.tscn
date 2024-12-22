@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=2 format=3 uid="uid://cc7bn0y1h6gkn"]
+
+[ext_resource type="PackedScene" uid="uid://d6rjyt47ro0i" path="res://Scenes/player.tscn" id="1_dc3ij"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,3 +11,5 @@
 [node name="Obstacles" type="TileMapLayer" parent="TileManager"]
 
 [node name="Obstacles2" type="TileMapLayer" parent="TileManager"]
+
+[node name="Player" parent="." instance=ExtResource("1_dc3ij")]
