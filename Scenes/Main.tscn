@@ -25,6 +25,6 @@ sources/0 = SubResource("TileSetAtlasSource_sr4lu")
 tile_set = SubResource("TileSet_fi6ar")
 rendering_quadrant_size = 32
 
-[node name="Obstacles2" type="TileMapLayer" parent="TileManager"]
+[node name="Player" type="TileMapLayer" parent="TileManager"]
 
 [node name="Gun" parent="." instance=ExtResource("1_dc3ij")]

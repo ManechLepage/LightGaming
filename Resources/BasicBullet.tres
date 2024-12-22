@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Bullet" load_steps=2 format=3 uid="uid://c56055ob1h5s2"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_j86ne"]
+
+[resource]
+script = ExtResource("1_j86ne")
+range = 0.5
+size = 2.0
+speed = 1.0
+max_bounce = 0

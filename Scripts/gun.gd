@@ -4,7 +4,7 @@ extends Resource
 @export var initial_bullet_quantity: int
 
 var bullet_quantity: int
-
+@export var bullet: Bullet
 
 func shoot() -> void:
 	bullet_quantity -= 1
