@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg5vye7h1dhpb"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_k4he3"]
+[ext_resource type="PackedScene" uid="uid://rb6n7356h37" path="res://Scenes/bullet.tscn" id="2_4u44f"]
+[ext_resource type="Texture2D" uid="uid://bxv5igi34jjqr" path="res://Graphics/Gun/revolver.aseprite" id="2_ugn0s"]
+
+[node name="Gun" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_k4he3")
+bullet_display = ExtResource("2_4u44f")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+texture = ExtResource("2_ugn0s")

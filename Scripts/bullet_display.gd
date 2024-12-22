@@ -1,3 +1,4 @@
+class_name BulletDisplay
 extends Node2D
 
 var bullet: Bullet
@@ -9,3 +10,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
+
+func load_bullet(_bullet: Bullet) -> void:
+	bullet = _bullet
+	sprite_2d.texture = bullet.sprite

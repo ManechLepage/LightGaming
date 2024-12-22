@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Gun" load_steps=3 format=3 uid="uid://c6nvvme4sd0ig"]
-
-[ext_resource type="Resource" uid="uid://c56055ob1h5s2" path="res://Resources/BasicBullet.tres" id="1_58i00"]
-[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_v1grt"]
-
-[resource]
-script = ExtResource("1_v1grt")
-initial_bullet_quantity = 2
-bullet = ExtResource("1_58i00")

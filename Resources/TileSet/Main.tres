@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b3d1sbaj86vhp"]
+
+[ext_resource type="Texture2D" uid="uid://bf5yp604x7llp" path="res://Graphics/brickwall.aseprite" id="1_mgx7e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sr4lu"]
+texture = ExtResource("1_mgx7e")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_sr4lu")

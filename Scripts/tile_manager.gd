@@ -4,6 +4,8 @@ extends Node2D
 @onready var obstacles: TileMapLayer = $Obstacles
 @onready var player: TileMapLayer = $Player
 
+@onready var gun: GunDisplay = %Gun
+
 @export var player_position: Vector2i
 
 func _ready() -> void:
@@ -11,11 +13,19 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_player()
+	update_gun()
+
+func get_player_position() -> Vector2:
+	return player.map_to_local(player_position)
 
 func update_player():
 	for tile in player.get_used_cells():
 		player.erase_cell(tile)
 	player.set_cell(player_position, 0, Vector2(0, 0))
+
+func update_gun():
+	gun.position = get_player_position()
+	gun.rotation = (get_global_mouse_position() - gun.position).normalized().angle()
 
 func _input(event: InputEvent) -> void:
 	var new_position: Vector2i = player_position

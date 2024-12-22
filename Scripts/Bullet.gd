@@ -6,3 +6,5 @@ extends Resource
 @export var speed: float = 1
 
 @export var max_bounce: int #-1 = no max
+
+@export var sprite: Texture2D
