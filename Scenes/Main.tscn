@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Texture2D" uid="uid://bf5yp604x7llp" path="res://Graphics/brickwall.aseprite" id="1_1bwd0"]
-[ext_resource type="PackedScene" uid="uid://d6rjyt47ro0i" path="res://Scenes/player.tscn" id="1_dc3ij"]
+[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="1_dc3ij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sr4lu"]
 texture = ExtResource("1_1bwd0")
