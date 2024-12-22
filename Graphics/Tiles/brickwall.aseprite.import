@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhicpckbt3uqy"
-path="res://.godot/imported/tiles.aseprite-c702bdf1316ec579e4724d3306349021.ctex"
+uid="uid://bf5yp604x7llp"
+path="res://.godot/imported/brickwall.aseprite-63cbb7a9cbc33d0bb53e4a5a066ae967.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/tiles.aseprite"
-dest_files=["res://.godot/imported/tiles.aseprite-c702bdf1316ec579e4724d3306349021.ctex"]
+source_file="res://Graphics/Tiles/brickwall.aseprite"
+dest_files=["res://.godot/imported/brickwall.aseprite-63cbb7a9cbc33d0bb53e4a5a066ae967.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4a7ha3nb3scw"
-path="res://.godot/imported/bullet1.aseprite-31ad019b5317704def18e403c955a9ed.ctex"
+uid="uid://dhicpckbt3uqy"
+path="res://.godot/imported/tiles.aseprite-1944f11d6650473b57502fcbc7163792.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/bullet1.aseprite"
-dest_files=["res://.godot/imported/bullet1.aseprite-31ad019b5317704def18e403c955a9ed.ctex"]
+source_file="res://Graphics/Tiles/tiles.aseprite"
+dest_files=["res://.godot/imported/tiles.aseprite-1944f11d6650473b57502fcbc7163792.ctex"]
 
 [params]
 

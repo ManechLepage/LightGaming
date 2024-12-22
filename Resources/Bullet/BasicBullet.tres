@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Bullet" load_steps=3 format=3 uid="uid://c56055ob1h5s2"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_mtm80"]
-[ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/bullet1.aseprite" id="2_odvx8"]
+[ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/Bullets/bullet1.aseprite" id="2_odvx8"]
 
 [resource]
 script = ExtResource("1_mtm80")
