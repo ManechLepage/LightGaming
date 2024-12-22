@@ -4,7 +4,7 @@ extends Node2D
 @onready var obstacles: TileMapLayer = $Obstacles
 @onready var player: TileMapLayer = $Player
 
-@export var player_position: Vector2
+@export var player_position: Vector2i
 
 func _ready() -> void:
 	pass
@@ -18,11 +18,21 @@ func update_player():
 	player.set_cell(player_position, 0, Vector2(0, 0))
 
 func _input(event: InputEvent) -> void:
+	var new_position: Vector2i = player_position
 	if Input.is_action_just_pressed("Up"):
-		player_position -= Vector2(0, 1)
-	if Input.is_action_just_pressed("Down"):
-		player_position += Vector2(0, 1)
-	if Input.is_action_just_pressed("Left"):
-		player_position -= Vector2(1, 0)
-	if Input.is_action_just_pressed("Right"):
-		player_position += Vector2(1, 0)
+		new_position -= Vector2i(0, 1)
+	elif Input.is_action_just_pressed("Down"):
+		new_position += Vector2i(0, 1)
+	elif Input.is_action_just_pressed("Left"):
+		new_position -= Vector2i(1, 0)
+	elif Input.is_action_just_pressed("Right"):
+		new_position += Vector2i(1, 0)
+	
+	if can_move(new_position):
+		player_position = new_position
+
+
+func can_move(position: Vector2i) -> bool:
+	if position in obstacles.get_used_cells():
+		return false
+	return true
