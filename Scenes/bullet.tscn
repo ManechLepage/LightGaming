@@ -23,6 +23,7 @@ texture = ExtResource("2_tu2bu")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-1, 0)
+color = Color(0.874041, 0.922979, 0.731751, 1)
 texture = ExtResource("2_u05yo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
