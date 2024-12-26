@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=17 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
 [ext_resource type="TileSet" uid="uid://b3d1sbaj86vhp" path="res://Resources/TileSet/Main.tres" id="2_gy4u0"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_r1ls2"]
+[ext_resource type="Resource" uid="uid://c5sek0urf2avc" path="res://Resources/Levels/Level1.tres" id="3_h64wn"]
 [ext_resource type="TileSet" uid="uid://bcekh5tporvjb" path="res://Resources/TileSet/Player.tres" id="3_lx75w"]
 [ext_resource type="PackedScene" uid="uid://cg5vye7h1dhpb" path="res://Scenes/gun.tscn" id="4_3axs8"]
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="5_502xh"]
@@ -60,6 +62,7 @@ texture_filter = 1
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_uvd5o")
+levels = Array[ExtResource("2_r1ls2")]([ExtResource("3_h64wn")])
 
 [node name="TileManager" type="Node2D" parent="." groups=["Tile"]]
 script = ExtResource("1_hlre7")
@@ -100,6 +103,7 @@ texture = ExtResource("8_pamyw")
 texture_scale = 2.55
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EnvironmentLight"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_x8j6b")
 }

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://c5sek0urf2avc"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_jlrkh"]
+
+[resource]
+script = ExtResource("1_jlrkh")
+player_pos = Vector2i(-7, -1)
+environment_lighting = &"Environment1"
