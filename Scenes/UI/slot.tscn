@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnyixiutwqc5r"]
+
+[ext_resource type="Texture2D" uid="uid://dtptnbc2fqjo0" path="res://Graphics/UI/bullet_slot.aseprite" id="1_lqhof"]
+[ext_resource type="Script" path="res://Scripts/slot_display.gd" id="2_lhoua"]
+[ext_resource type="Texture2D" uid="uid://biv5tne3udqrw" path="res://Graphics/UI/bullet_slot_selected.aseprite" id="3_37pbg"]
+
+[node name="Control" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(18, 18)
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource("1_lqhof")
+script = ExtResource("2_lhoua")
+selected_texture = ExtResource("3_37pbg")
+deselected_texture = ExtResource("1_lqhof")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0

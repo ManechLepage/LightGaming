@@ -16,8 +16,11 @@ func can_shoot() -> bool:
 	return false
 
 func shoot() -> Bullet:
-	bullets.remove_at(bullet_index)
-	return bullets[bullet_index]
+	if bullets[bullet_index]:
+		var bullet: Bullet = bullets[bullet_index].duplicate(true)
+		bullets[bullet_index] = null
+		return bullet
+	return null
 
 func reset() -> void:
 	bullets = initial_bullets
@@ -29,5 +32,8 @@ func switch_left():
 
 func switch_right():
 	bullet_index += 1
-	if bullet_index == len(bullets) - 1:
+	if bullet_index == len(bullets):
 		bullet_index = 0
+
+func get_bullet() -> Bullet:
+	return bullets[bullet_index]

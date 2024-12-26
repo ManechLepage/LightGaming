@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=18 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cg5vye7h1dhpb" path="res://Scenes/gun.tscn" id="4_3axs8"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
+[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://b4wl75u68kh1t" path="res://Graphics/Environment/Environment1_1.aseprite" id="10_nltqk"]
+[ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
+[ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
 
 [sub_resource type="Animation" id="Animation_jb8i3"]
 resource_name = "Environment1"
@@ -81,13 +84,13 @@ tile_set = ExtResource("3_lx75w")
 [node name="Gun" parent="." instance=ExtResource("4_3axs8")]
 unique_name_in_owner = true
 position = Vector2(12, -13)
+gun = ExtResource("8_wjyx6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 
 [node name="Bullets" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("7_atwix")
@@ -111,6 +114,60 @@ speed_scale = 0.5
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cl2t")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BulletSlots" type="Control" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -92.0
+offset_right = 96.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("12_q7sty")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/BulletSlots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -27.0
+offset_right = -31.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+alignment = 1
+
+[node name="Control" parent="CanvasLayer/GameUI/BulletSlots/HBoxContainer" instance=ExtResource("12_2wxyu")]
+layout_mode = 2
+
+[node name="Control2" parent="CanvasLayer/GameUI/BulletSlots/HBoxContainer" instance=ExtResource("12_2wxyu")]
+layout_mode = 2
+
+[node name="Control3" parent="CanvasLayer/GameUI/BulletSlots/HBoxContainer" instance=ExtResource("12_2wxyu")]
+layout_mode = 2
+
+[connection signal="load_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
+[connection signal="update_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
 [connection signal="shoot" from="InputManager" to="Gun" method="shoot"]
+[connection signal="switch_bullet_left" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_left"]
+[connection signal="switch_bullet_right" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_right"]
 
 [editable path="Gun"]
