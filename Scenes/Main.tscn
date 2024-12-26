@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=19 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b4wl75u68kh1t" path="res://Graphics/Environment/Environment1_1.aseprite" id="10_nltqk"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
+[ext_resource type="Texture2D" uid="uid://ckx7a4868qy1i" path="res://Graphics/UI/heart.aseprite" id="14_01i7l"]
 
 [sub_resource type="Animation" id="Animation_jb8i3"]
 resource_name = "Environment1"
@@ -163,6 +164,38 @@ layout_mode = 2
 
 [node name="Control3" parent="CanvasLayer/GameUI/BulletSlots/HBoxContainer" instance=ExtResource("12_2wxyu")]
 layout_mode = 2
+
+[node name="Health" type="Control" parent="CanvasLayer/GameUI"]
+texture_filter = 1
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 326.0
+offset_bottom = 74.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/Health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+
+[node name="Hp" type="TextureRect" parent="CanvasLayer/GameUI/Health/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_01i7l")
+
+[node name="Hp2" type="TextureRect" parent="CanvasLayer/GameUI/Health/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_01i7l")
+
+[node name="Hp3" type="TextureRect" parent="CanvasLayer/GameUI/Health/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_01i7l")
 
 [connection signal="load_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]

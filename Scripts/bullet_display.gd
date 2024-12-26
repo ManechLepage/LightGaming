@@ -24,7 +24,7 @@ func load_bullet(_bullet: Bullet, _position: Vector2, angle: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if bullet.bounce() or is_killed():
-		queue_free()
+		kill_bullet()
 
 func _physics_process(delta: float) -> void:
 	last_velocity = linear_velocity
@@ -42,3 +42,15 @@ func is_killed() -> bool:
 		else:
 			tile_position_offset = Vector2i(0, -1)
 	return GlobalValues.tile_manager.is_bullet_killed(position, tile_position_offset)
+
+
+func kill_bullet() -> void:
+	if bullet.explosion_range > 0:
+		linear_velocity = Vector2.ZERO
+		sprite_2d.visible = false
+		point_light_2d.scale = Vector2.ZERO
+		var tween = create_tween()
+		tween.tween_property(point_light_2d, "scale", Vector2(bullet.explosion_range, bullet.explosion_range), bullet.explosion_range * 0.2).set_ease(Tween.EASE_OUT)
+		await tween.finished
+	queue_free()
+	
