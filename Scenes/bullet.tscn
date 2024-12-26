@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://rb6n7356h37"]
+[gd_scene load_steps=7 format=3 uid="uid://rb6n7356h37"]
 
 [ext_resource type="Script" path="res://Scripts/bullet_display.gd" id="1_377rx"]
 [ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/Bullets/bullet1.aseprite" id="2_tu2bu"]
@@ -10,6 +10,9 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p7ep"]
 radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rmdo6"]
+radius = 9.0
 
 [node name="Bullet" type="RigidBody2D"]
 texture_filter = 1
@@ -23,8 +26,18 @@ texture = ExtResource("2_tu2bu")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-1, 0)
-color = Color(0.874041, 0.922979, 0.731751, 1)
 texture = ExtResource("2_u05yo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3p7ep")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rmdo6")
+debug_color = Color(0.750067, 0.15189, 0.354118, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

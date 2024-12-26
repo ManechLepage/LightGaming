@@ -8,3 +8,13 @@ extends Resource
 @export var max_bounce: int #-1 = no max
 
 @export var sprite: Texture2D
+
+@export var bullet_color: Color
+
+var bounce_count: int
+
+func bounce() -> bool:
+	bounce_count += 1
+	if bounce_count == max_bounce:
+		return true
+	return false

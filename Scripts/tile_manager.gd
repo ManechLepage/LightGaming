@@ -1,12 +1,20 @@
+class_name TileManager
 extends Node2D
 
 @onready var background: TileMapLayer = $Background
 @onready var obstacles: TileMapLayer = $Obstacles
 @onready var player: TileMapLayer = $Player
 
+@onready var level_manager: LevelManager = %LevelManager
+@onready var bullets: Node2D = %Bullets
 @onready var gun: GunDisplay = %Gun
 
 var player_position: Vector2i
+
+# Interactions
+# -1: Goal
+# 0: Wall
+# 1: Death
 
 func _ready() -> void:
 	player_position = player.get_used_cells()[0]
@@ -44,6 +52,26 @@ func _input(event: InputEvent) -> void:
 
 
 func can_move(position: Vector2i) -> bool:
-	if position in obstacles.get_used_cells():
+	if bullets.get_child_count() > 0:
+		return false
+	if not manage_interaction(position):
 		return false
 	return true
+
+func manage_interaction(position: Vector2i) -> bool:
+	if position in obstacles.get_used_cells():
+		var tile: TileData = obstacles.get_cell_tile_data(position)
+		var tile_interaction: int = tile.get_custom_data("Interaction")
+		if tile_interaction == -1:
+			level_manager.win_level()
+		elif tile_interaction == 0:
+			return false
+		elif tile_interaction == 1:
+			level_manager.kill_player()
+	return true
+
+func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
+	var tile_position: Vector2i = obstacles.local_to_map(position) + offset
+	if obstacles.get_cell_tile_data(tile_position):
+		return obstacles.get_cell_tile_data(tile_position).get_custom_data("KillBullet")
+	return false

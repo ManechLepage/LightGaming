@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/Bullets/bullet1.aseprite" id="2_odvx8"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_mtm80")
 range = 0.5
-size = 2.0
+size = 0.8
 speed = 7.0
-max_bounce = 0
+max_bounce = 3
 sprite = ExtResource("2_odvx8")
+bullet_color = Color(0.876789, 0.651024, 0.641703, 1)

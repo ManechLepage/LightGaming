@@ -20,9 +20,17 @@ config/icon="res://icon.svg"
 
 aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite/Aseprite.exe"
 
+[autoload]
+
+GlobalValues="*res://Scripts/global_values.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+
+[global_group]
+
+Tile=""
 
 [input]
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=11 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
 [ext_resource type="TileSet" uid="uid://b3d1sbaj86vhp" path="res://Resources/TileSet/Main.tres" id="2_gy4u0"]
 [ext_resource type="TileSet" uid="uid://bcekh5tporvjb" path="res://Resources/TileSet/Player.tres" id="3_lx75w"]
 [ext_resource type="PackedScene" uid="uid://cg5vye7h1dhpb" path="res://Scenes/gun.tscn" id="4_3axs8"]
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="5_502xh"]
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="6_uxpxk"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
+[ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
 
 [sub_resource type="Environment" id="Environment_0cl2t"]
 ambient_light_source = 1
@@ -17,7 +19,11 @@ glow_intensity = 1.49
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 
-[node name="TileManager" type="Node2D" parent="."]
+[node name="LevelManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_uvd5o")
+
+[node name="TileManager" type="Node2D" parent="." groups=["Tile"]]
 script = ExtResource("1_hlre7")
 
 [node name="Background" type="TileMapLayer" parent="TileManager"]
@@ -25,7 +31,7 @@ tile_map_data = PackedByteArray("AAD5//z/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAA
 tile_set = ExtResource("2_gy4u0")
 
 [node name="Obstacles" type="TileMapLayer" parent="TileManager"]
-tile_map_data = PackedByteArray("AAD4//z/AAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD4//z/AAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD8//7/AAAAAAEAAAD8////AAABAAEAAAD8/wAAAAABAAEAAAD8/wEAAAAAAAEAAAAAAPz/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAEAP7/AAAAAAEAAAAEAP//AAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAAAAAEAAAAGAAEAAAABAAAAAAA=")
 tile_set = ExtResource("2_gy4u0")
 rendering_quadrant_size = 32
 
@@ -47,11 +53,17 @@ unique_name_in_owner = true
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("7_atwix")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="EnvironmentLight" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("8_pamyw")
+texture_scale = 2.55
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cl2t")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
 
 [connection signal="shoot" from="InputManager" to="Gun" method="shoot"]
 
