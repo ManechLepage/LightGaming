@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=15 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -9,6 +9,44 @@
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="6_uxpxk"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
+[ext_resource type="Texture2D" uid="uid://b4wl75u68kh1t" path="res://Graphics/Environment/Environment1_1.aseprite" id="10_nltqk"]
+
+[sub_resource type="Animation" id="Animation_jb8i3"]
+resource_name = "Environment1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_pamyw"), ExtResource("10_nltqk")]
+}
+
+[sub_resource type="Animation" id="Animation_5551p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_pamyw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8j6b"]
+_data = {
+"Environment1": SubResource("Animation_jb8i3"),
+"RESET": SubResource("Animation_5551p")
+}
 
 [sub_resource type="Environment" id="Environment_0cl2t"]
 ambient_light_source = 1
@@ -54,13 +92,19 @@ unique_name_in_owner = true
 script = ExtResource("7_atwix")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="EnvironmentLight" type="PointLight2D" parent="."]
 energy = 0.5
 texture = ExtResource("8_pamyw")
 texture_scale = 2.55
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnvironmentLight"]
+libraries = {
+"": SubResource("AnimationLibrary_x8j6b")
+}
+autoplay = "Environment1"
+speed_scale = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cl2t")
