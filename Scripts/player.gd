@@ -1,7 +1,7 @@
 class_name GunDisplay
 extends Node2D
 
-@export var guns: Array[Gun]
+@export var gun: Gun
 @export var bullet_display: PackedScene
 
 var current_gun: int
@@ -14,15 +14,14 @@ func _ready() -> void:
 	reset()
 
 func reset() -> void:
-	for gun in guns:
-		gun.reset()
+	gun.reset()
 
 func shoot():
-	if guns[current_gun].can_shoot():
-		guns[current_gun].shoot()
-		var bullet: BulletDisplay = bullet_display.instantiate()
+	if gun.can_shoot():
+		var bullet_resource: Bullet = gun.shoot()
+		var bullet: BulletGraph = bullet_display.instantiate()
 		bullets.add_child(bullet)
-		bullet.load_bullet(guns[current_gun].bullet.duplicate(true), shot_position.global_position, rotation)
+		bullet.load_bullet(gun.bullet.duplicate(true), shot_position.global_position, rotation)
 
 func switch_gun_left():
 	pass
@@ -31,4 +30,4 @@ func switch_gun_right():
 	pass
 
 func update_gun():
-	sprite.texture = guns[current_gun].sprite
+	sprite.texture = gun.sprite

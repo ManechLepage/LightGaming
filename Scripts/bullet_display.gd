@@ -1,4 +1,4 @@
-class_name BulletDisplay
+class_name BulletGraph
 extends RigidBody2D
 
 var bullet: Bullet
