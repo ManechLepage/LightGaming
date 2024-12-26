@@ -17,6 +17,7 @@ var player_position: Vector2i
 # 1: Death
 
 func _ready() -> void:
+	print(gun is GunDisplay)
 	player_position = player.get_used_cells()[0]
 
 func _process(delta: float) -> void:

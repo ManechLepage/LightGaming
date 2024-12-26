@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=16 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -6,11 +6,10 @@
 [ext_resource type="Script" path="res://Scripts/level.gd" id="2_r1ls2"]
 [ext_resource type="Resource" uid="uid://c5sek0urf2avc" path="res://Resources/Levels/Level1.tres" id="3_h64wn"]
 [ext_resource type="TileSet" uid="uid://bcekh5tporvjb" path="res://Resources/TileSet/Player.tres" id="3_lx75w"]
-[ext_resource type="PackedScene" uid="uid://cg5vye7h1dhpb" path="res://Scenes/gun.tscn" id="4_3axs8"]
-[ext_resource type="Script" path="res://Scripts/gun.gd" id="5_502xh"]
-[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="6_uxpxk"]
+[ext_resource type="PackedScene" path="res://Scenes/gun.tscn" id="4_3axs8"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
+[ext_resource type="Script" path="res://Scripts/bullet_display.gd" id="8_pulif"]
 [ext_resource type="Texture2D" uid="uid://b4wl75u68kh1t" path="res://Graphics/Environment/Environment1_1.aseprite" id="10_nltqk"]
 
 [sub_resource type="Animation" id="Animation_jb8i3"]
@@ -80,16 +79,17 @@ rendering_quadrant_size = 32
 tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAA=")
 tile_set = ExtResource("3_lx75w")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
-
 [node name="Gun" parent="." instance=ExtResource("4_3axs8")]
 unique_name_in_owner = true
 position = Vector2(12, -13)
-guns = Array[ExtResource("5_502xh")]([ExtResource("6_uxpxk")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
 
 [node name="Bullets" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
+script = ExtResource("8_pulif")
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("7_atwix")
