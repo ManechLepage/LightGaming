@@ -8,7 +8,6 @@ func _ready() -> void:
 func select(index: int) -> void:
 	for slot in h_box_container.get_children():
 		slot.deselect()
-	print(index)
 	h_box_container.get_child(index).select()
 
 func load_bullets():

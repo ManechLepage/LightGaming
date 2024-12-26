@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Bullet" load_steps=3 format=3 uid="uid://ddbldhd623hko"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_8ygr6"]
+[ext_resource type="Texture2D" uid="uid://cofi02ecdd6iy" path="res://Graphics/Bullets/bullet3.aseprite" id="2_5eev1"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_8ygr6")
+size = 0.8
+speed = 7.0
+max_bounce = 3
+sprite = ExtResource("2_5eev1")
+bullet_color = Color(0.659029, 0.714076, 0.860638, 1)
