@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Gun" load_steps=4 format=3 uid="uid://c6nvvme4sd0ig"]
+[gd_resource type="Resource" script_class="Gun" load_steps=7 format=3 uid="uid://c6nvvme4sd0ig"]
 
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_ol3v3"]
 [ext_resource type="Resource" uid="uid://c56055ob1h5s2" path="res://Resources/Bullet/BasicBullet.tres" id="1_olk10"]
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="2_xek33"]
 [ext_resource type="Texture2D" uid="uid://bxv5igi34jjqr" path="res://Graphics/Gun/revolver.aseprite" id="3_1y7lv"]
+[ext_resource type="Resource" uid="uid://d0quvmm2ni1qs" path="res://Resources/Bullet/BasicBullet2.tres" id="3_hnn5j"]
+[ext_resource type="Resource" uid="uid://ddbldhd623hko" path="res://Resources/Bullet/BasicBullet3.tres" id="4_ogdk5"]
 
 [resource]
 script = ExtResource("2_xek33")
-initial_bullet_quantity = 2
 name = "Revolver"
-bullet = ExtResource("1_olk10")
+initial_bullets = Array[ExtResource("1_ol3v3")]([ExtResource("1_olk10"), ExtResource("3_hnn5j"), ExtResource("4_ogdk5")])
 sprite = ExtResource("3_1y7lv")
