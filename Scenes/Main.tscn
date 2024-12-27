@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=31 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/bullets.gd" id="21_d05cl"]
 [ext_resource type="Texture2D" uid="uid://cf7gjancr6lq0" path="res://Graphics/UI/bullet.aseprite" id="22_w2ybf"]
 [ext_resource type="Texture2D" uid="uid://b4tijij3wt34i" path="res://Graphics/shop1.aseprite" id="23_ewref"]
+[ext_resource type="Script" path="res://Scripts/UI/shop_1.gd" id="23_x0loj"]
 [ext_resource type="PackedScene" uid="uid://c5gt4kwovc33f" path="res://Graphics/shopkeeper1.aseprite" id="24_a6yg7"]
 [ext_resource type="Texture2D" uid="uid://4ft4wlap7oi2" path="res://Graphics/shop2.aseprite" id="25_581fu"]
 [ext_resource type="PackedScene" uid="uid://bhjkmnru1fss5" path="res://Graphics/shopkeeper2.aseprite" id="26_v3jed"]
@@ -313,7 +314,6 @@ text = "Level - 1"
 
 [node name="Shop1" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -321,6 +321,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("23_x0loj")
 
 [node name="Background" type="TextureRect" parent="CanvasLayer/Shop1"]
 layout_mode = 1
@@ -335,8 +336,14 @@ texture = ExtResource("23_ewref")
 position = Vector2(240, 298)
 scale = Vector2(4.88, 4.88)
 
+[node name="Items" type="Control" parent="CanvasLayer/Shop1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Shop2" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15

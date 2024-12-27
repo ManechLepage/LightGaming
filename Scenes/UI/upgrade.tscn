@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://dccjsnq263bw8"]
+
+[ext_resource type="Texture2D" uid="uid://ddax1riseyl6u" path="res://Graphics/UI/shelf.aseprite" id="1_povfo"]
+[ext_resource type="Script" path="res://Scripts/UI/upgrade_display.gd" id="1_xlxi1"]
+[ext_resource type="FontFile" uid="uid://61wtx5m3f10l" path="res://Graphics/upheavtt.ttf" id="2_16x8o"]
+[ext_resource type="Texture2D" uid="uid://7qahuws03kie" path="res://Graphics/UI/upgrade_ui.aseprite" id="2_us7k3"]
+
+[node name="Upgrade" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchor_right = 0.111
+anchor_bottom = 0.216
+offset_right = 0.127991
+offset_bottom = 0.0319977
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xlxi1")
+
+[node name="Shelf" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_povfo")
+
+[node name="UpgradeIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 100.0
+grow_horizontal = 2
+texture = ExtResource("2_us7k3")
+
+[node name="Buff" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -44.0
+offset_right = 42.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.420434, 0.70359, 0.385377, 1)
+theme_override_fonts/font = ExtResource("2_16x8o")
+theme_override_font_sizes/font_size = 20
+text = "+1 Bounce"
+
+[node name="Debuff" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -30.0
+offset_right = 42.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.920036, 0.192025, 0.242296, 1)
+theme_override_fonts/font = ExtResource("2_16x8o")
+theme_override_font_sizes/font_size = 20
+text = "+1 Speed"
