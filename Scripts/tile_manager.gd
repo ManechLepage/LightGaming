@@ -95,17 +95,18 @@ func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
 var lights = []
 func duplicate_light(position: Vector2i):
 	var new_light = light.duplicate()
+	new_light.position = position
 	add_child(new_light)
-
+	lights.append(new_light)
 
 func destroy_gear(position: Vector2i) -> void:
 	obstacles.set_cell(position, 0, Vector2i(3, 1))
 	duplicate_light(position)
-	lights.append(position)
-func destroy_light(position: Vector2i):
+func destroy_light(position: Vector2):
 	for l in lights:
-		if l == position:
-			light.queue_free()
+		if l.position == position:
+			l.queue_free()
+			break
 			
 	
 func load_obstacles(level: Level) -> void:
