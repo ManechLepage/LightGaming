@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=22 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
+[ext_resource type="Texture2D" uid="uid://db0h741mp1pyj" path="res://Graphics/light_map2.aseprite" id="13_cl2ex"]
 [ext_resource type="Texture2D" uid="uid://ckx7a4868qy1i" path="res://Graphics/UI/heart.aseprite" id="14_01i7l"]
+[ext_resource type="Script" path="res://Scripts/UI/health.gd" id="16_fx0ks"]
 [ext_resource type="Texture2D" uid="uid://deqjjpo3ppnj8" path="res://Graphics/UI/gear.aseprite" id="18_mslhg"]
 [ext_resource type="Script" path="res://Scripts/UI/gear_ui.gd" id="18_qbgws"]
 [ext_resource type="FontFile" uid="uid://61wtx5m3f10l" path="res://Graphics/upheavtt.ttf" id="19_eowuw"]
@@ -28,30 +30,37 @@ glow_strength = 2.0
 glow_hdr_threshold = 0.11
 glow_hdr_luminance_cap = 17.3
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 texture_filter = 1
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("7_atwix")
 
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_uvd5o")
 
-[node name="TileManager" type="Node2D" parent="." groups=["Tile"]]
+[node name="Level" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TileManager" type="Node2D" parent="Level" groups=["Tile"]]
+unique_name_in_owner = true
 script = ExtResource("1_hlre7")
 
-[node name="Background" type="TileMapLayer" parent="TileManager"]
+[node name="Background" type="TileMapLayer" parent="Level/TileManager"]
 tile_map_data = PackedByteArray("AAD5//z/AQAAAAAAAAD5//3/AQABAAAAAAD5//7/AQAAAAAAAAD5////AQABAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQABAAAAAAD5/wIAAQAAAAAAAAD5/wMAAQABAAAAAAD6//z/AQABAAAAAAD6//3/AQAAAAAAAAD6//7/AQABAAAAAAD6////AQAAAAAAAAD6/wAAAQABAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQABAAAAAAD6/wMAAQAAAAAAAAD7//z/AQAAAAAAAAD7//3/AQABAAAAAAD7//7/AQAAAAAAAAD7////AQABAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQABAAAAAAD7/wIAAQAAAAAAAAD7/wMAAQABAAAAAAD8//z/AQABAAAAAAD8//3/AQAAAAAAAAD8//7/AQABAAAAAAD8////AQAAAAAAAAD8/wAAAQABAAAAAAD8/wEAAQAAAAAAAAD8/wIAAQABAAAAAAD8/wMAAQAAAAAAAAD9//z/AQAAAAAAAAD9//3/AQABAAAAAAD9//7/AQAAAAAAAAD9////AQABAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQABAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQABAAAAAAD+//z/AQABAAAAAAD+//3/AQAAAAAAAAD+//7/AQABAAAAAAD+////AQAAAAAAAAD+/wAAAQABAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQABAAAAAAD+/wMAAQAAAAAAAAD///z/AQAAAAAAAAD///3/AQABAAAAAAD///7/AQAAAAAAAAD/////AQABAAAAAAD//wAAAQAAAAAAAAD//wEAAQABAAAAAAD//wIAAQAAAAAAAAD//wMAAQABAAAAAAAAAPz/AQABAAAAAAAAAP3/AQAAAAAAAAAAAP7/AQABAAAAAAAAAP//AQAAAAAAAAAAAAAAAQABAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQABAAAAAAAAAAMAAQAAAAAAAAABAPz/AQAAAAAAAAABAP3/AQABAAAAAAABAP7/AQAAAAAAAAABAP//AQABAAAAAAABAAAAAQAAAAAAAAABAAEAAQABAAAAAAABAAIAAQAAAAAAAAABAAMAAQABAAAAAAACAPz/AQABAAAAAAACAP3/AQAAAAAAAAACAP7/AQABAAAAAAACAP//AQAAAAAAAAACAAAAAQABAAAAAAACAAEAAQAAAAAAAAACAAIAAQABAAAAAAACAAMAAQAAAAAAAAADAPz/AQAAAAAAAAADAP3/AQABAAAAAAADAP7/AQAAAAAAAAADAP//AQABAAAAAAADAAAAAQAAAAAAAAADAAEAAQABAAAAAAADAAIAAQAAAAAAAAADAAMAAQABAAAAAAAEAPz/AQABAAAAAAAEAP3/AQAAAAAAAAAEAP7/AQABAAAAAAAEAP//AQAAAAAAAAAEAAAAAQABAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQABAAAAAAAEAAMAAQAAAAAAAAAFAPz/AQAAAAAAAAAFAP3/AQABAAAAAAAFAP7/AQAAAAAAAAAFAP//AQABAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQABAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQABAAAAAAAGAPz/AQABAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQABAAAAAAAGAP//AQAAAAAAAAAGAAAAAQABAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQABAAAAAAAGAAMAAQAAAAAAAAA=")
 tile_set = ExtResource("2_gy4u0")
 
-[node name="Obstacles" type="TileMapLayer" parent="TileManager"]
+[node name="Obstacles" type="TileMapLayer" parent="Level/TileManager"]
 visible = false
 tile_map_data = PackedByteArray("AAD4//z/AAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD4//v/AAAAAAAAAAA=")
 tile_set = ExtResource("2_gy4u0")
 rendering_quadrant_size = 32
 
-[node name="Player" type="TileMapLayer" parent="TileManager"]
+[node name="Player" type="TileMapLayer" parent="Level/TileManager"]
 tile_set = ExtResource("3_lx75w")
 
-[node name="Gun" type="Node2D" parent="." groups=["Gun"]]
+[node name="Gun" type="Node2D" parent="Level" groups=["Gun"]]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(12, -13)
@@ -60,37 +69,42 @@ gun = ExtResource("8_wjyx6")
 bullet_display = ExtResource("9_t07wy")
 split_shot_bullet = ExtResource("10_bp7su")
 
-[node name="Sprite" type="Sprite2D" parent="Gun"]
+[node name="Sprite" type="Sprite2D" parent="Level/Gun"]
 rotation = 1.5708
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_pk2aw")
 
-[node name="ShotPosition" type="Node2D" parent="Gun"]
-position = Vector2(6.5, -16)
+[node name="ShotPosition" type="Node2D" parent="Level/Gun"]
+position = Vector2(16.5, 10)
 
-[node name="PointLight2D" type="PointLight2D" parent="Gun"]
+[node name="PointLight2D" type="PointLight2D" parent="Level/Gun"]
 position = Vector2(4, -2)
 energy = 0.8
 texture = ExtResource("10_ydagp")
 texture_scale = 0.18
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
-
-[node name="Bullets" type="Node2D" parent="."]
+[node name="Bullets" type="Node2D" parent="Level"]
 unique_name_in_owner = true
 
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource("7_atwix")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
+[node name="Darkness" type="CanvasModulate" parent="Level"]
 color = Color(0, 0, 0, 1)
 
-[node name="EnvironmentLight" type="PointLight2D" parent="."]
+[node name="Lights" type="Node2D" parent="Level"]
+
+[node name="EnvironmentLight" type="PointLight2D" parent="Level/Lights"]
+unique_name_in_owner = true
 energy = 0.5
 texture = ExtResource("8_pamyw")
 texture_scale = 2.55
+
+[node name="EndLight" type="PointLight2D" parent="Level/Lights"]
+unique_name_in_owner = true
+energy = 0.8
+texture = ExtResource("13_cl2ex")
+texture_scale = 0.22
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cl2t")
@@ -106,6 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BulletSlots" type="Control" parent="CanvasLayer/GameUI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -152,6 +167,7 @@ offset_left = 7.0
 offset_top = 6.0
 offset_right = 326.0
 offset_bottom = 74.0
+script = ExtResource("16_fx0ks")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/Health"]
 layout_mode = 1
@@ -219,9 +235,26 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 vertical_alignment = 1
 
-[connection signal="update_gear" from="LevelManager" to="CanvasLayer/GameUI/Gears" method="_on_level_manager_update_gear"]
-[connection signal="load_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
-[connection signal="update_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
-[connection signal="shoot" from="InputManager" to="Gun" method="shoot"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/GameUI"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_top = 6.0
+offset_right = 91.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 40
+text = "Level - 1"
+
+[connection signal="shoot" from="InputManager" to="Level/Gun" method="shoot"]
 [connection signal="switch_bullet_left" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_left"]
 [connection signal="switch_bullet_right" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_right"]
+[connection signal="hurt" from="LevelManager" to="CanvasLayer/GameUI/Health" method="hurt"]
+[connection signal="update_gear" from="LevelManager" to="CanvasLayer/GameUI/Gears" method="_on_level_manager_update_gear"]
+[connection signal="load_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
+[connection signal="update_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
