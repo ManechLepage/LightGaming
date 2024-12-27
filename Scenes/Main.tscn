@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=30 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b4tijij3wt34i" path="res://Graphics/shop1.aseprite" id="23_ewref"]
 [ext_resource type="PackedScene" uid="uid://c5gt4kwovc33f" path="res://Graphics/shopkeeper1.aseprite" id="24_a6yg7"]
 [ext_resource type="Texture2D" uid="uid://4ft4wlap7oi2" path="res://Graphics/shop2.aseprite" id="25_581fu"]
+[ext_resource type="PackedScene" uid="uid://bhjkmnru1fss5" path="res://Graphics/shopkeeper2.aseprite" id="26_v3jed"]
 [ext_resource type="Texture2D" uid="uid://bmv0bgn57nwwn" path="res://Graphics/shop3.aseprite" id="27_bynh2"]
 [ext_resource type="PackedScene" uid="uid://b3on4wxox7ddv" path="res://Graphics/shopkeeper3.aseprite" id="28_u6s4g"]
 
@@ -336,7 +337,6 @@ scale = Vector2(4.88, 4.88)
 
 [node name="Shop2" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -353,6 +353,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("25_581fu")
+
+[node name="shopkeeper2" parent="CanvasLayer/Shop2" instance=ExtResource("26_v3jed")]
+position = Vector2(362, 293)
+scale = Vector2(3.22, 3.22)
 
 [node name="Shop3" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
