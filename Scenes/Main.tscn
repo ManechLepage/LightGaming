@@ -89,6 +89,7 @@ texture_scale = 0.18
 unique_name_in_owner = true
 
 [node name="Darkness" type="CanvasModulate" parent="Level"]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="Level"]
