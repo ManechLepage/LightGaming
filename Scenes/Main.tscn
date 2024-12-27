@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=24 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://deqjjpo3ppnj8" path="res://Graphics/UI/gear.aseprite" id="18_mslhg"]
 [ext_resource type="Script" path="res://Scripts/UI/gear_ui.gd" id="18_qbgws"]
 [ext_resource type="FontFile" uid="uid://61wtx5m3f10l" path="res://Graphics/upheavtt.ttf" id="19_eowuw"]
+[ext_resource type="Script" path="res://Scripts/UI/bullets.gd" id="21_d05cl"]
+[ext_resource type="Texture2D" uid="uid://cf7gjancr6lq0" path="res://Graphics/UI/bullet.aseprite" id="22_w2ybf"]
 
 [sub_resource type="Environment" id="Environment_0cl2t"]
 background_mode = 3
@@ -87,6 +89,7 @@ texture_scale = 0.18
 unique_name_in_owner = true
 
 [node name="Darkness" type="CanvasModulate" parent="Level"]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="Level"]
@@ -193,48 +196,6 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("14_01i7l")
 
-[node name="Gears" type="Control" parent="CanvasLayer/GameUI"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -94.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = 46.0
-grow_horizontal = 0
-script = ExtResource("18_qbgws")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Gears"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("18_mslhg")
-
-[node name="Label" type="Label" parent="CanvasLayer/GameUI/Gears"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -9.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("19_eowuw")
-theme_override_font_sizes/font_size = 60
-text = "0"
-vertical_alignment = 1
-
 [node name="LevelLabel" type="Label" parent="CanvasLayer/GameUI"]
 unique_name_in_owner = true
 texture_filter = 1
@@ -251,10 +212,102 @@ theme_override_fonts/font = ExtResource("19_eowuw")
 theme_override_font_sizes/font_size = 40
 text = "Level - 1"
 
+[node name="Money" type="Control" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gears" type="Control" parent="CanvasLayer/GameUI/Money"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 46.0
+grow_horizontal = 0
+script = ExtResource("18_qbgws")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Money/Gears"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("18_mslhg")
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/Money/Gears"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -9.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+vertical_alignment = 1
+
+[node name="Bullets" type="Control" parent="CanvasLayer/GameUI/Money"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 45.0
+offset_right = -6.0
+offset_bottom = 85.0
+grow_horizontal = 0
+script = ExtResource("21_d05cl")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Money/Bullets"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("22_w2ybf")
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/Money/Bullets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -9.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+vertical_alignment = 1
+
 [connection signal="shoot" from="InputManager" to="Level/Gun" method="shoot"]
 [connection signal="switch_bullet_left" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_left"]
 [connection signal="switch_bullet_right" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_right"]
 [connection signal="hurt" from="LevelManager" to="CanvasLayer/GameUI/Health" method="hurt"]
-[connection signal="update_gear" from="LevelManager" to="CanvasLayer/GameUI/Gears" method="_on_level_manager_update_gear"]
+[connection signal="update_gear" from="LevelManager" to="CanvasLayer/GameUI/Money/Gears" method="_on_level_manager_update_gear"]
 [connection signal="load_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
