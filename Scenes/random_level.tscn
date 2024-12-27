@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhv2g8sgvo5m2"]
+
+[ext_resource type="Script" path="res://Scripts/random_level.gd" id="1_hpuj5"]
+[ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="2_swlcl"]
+[ext_resource type="Texture2D" uid="uid://rrhck0e6c2pp" path="res://Graphics/Environment/Environment2.aseprite" id="3_cv0rf"]
+[ext_resource type="Texture2D" uid="uid://dk01vgywy4d3f" path="res://Graphics/Environment/Environment3.aseprite" id="4_xjlgh"]
+[ext_resource type="Texture2D" uid="uid://dvjh548w8ge7u" path="res://Graphics/Environment/Environment4.aseprite" id="5_jrqxt"]
+
+[node name="RandomLevel" type="Node"]
+script = ExtResource("1_hpuj5")
+environments = Array[Texture2D]([ExtResource("2_swlcl"), ExtResource("3_cv0rf"), ExtResource("4_xjlgh"), ExtResource("5_jrqxt")])

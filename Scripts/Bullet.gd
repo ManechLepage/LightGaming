@@ -12,10 +12,12 @@ extends Resource
 
 @export var explosion_range: float = 0
 
+@export var split_quantity: int
+
 var bounce_count: int
 
 func bounce() -> bool:
 	bounce_count += 1
-	if bounce_count == max_bounce:
+	if bounce_count >= max_bounce:
 		return true
 	return false

@@ -23,8 +23,9 @@ func load_bullet(_bullet: Bullet, _position: Vector2, angle: float) -> void:
 	point_light_2d.scale = Vector2(bullet.size, bullet.size)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if bullet.bounce() or is_killed():
-		kill_bullet()
+	if body is TileMapLayer:
+		if bullet.bounce() or is_killed():
+			kill_bullet()
 
 func _physics_process(delta: float) -> void:
 	last_velocity = linear_velocity
@@ -45,6 +46,8 @@ func is_killed() -> bool:
 
 
 func kill_bullet() -> void:
+	for i in range(bullet.split_quantity):
+		GlobalValues.gun_manager.generate_split_bullet(position, i)
 	if bullet.explosion_range > 0:
 		linear_velocity = Vector2.ZERO
 		sprite_2d.visible = false
@@ -53,4 +56,3 @@ func kill_bullet() -> void:
 		tween.tween_property(point_light_2d, "scale", Vector2(bullet.explosion_range, bullet.explosion_range), bullet.explosion_range * 0.2).set_ease(Tween.EASE_OUT)
 		await tween.finished
 	queue_free()
-	

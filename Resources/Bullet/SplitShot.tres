@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Bullet" load_steps=3 format=3 uid="uid://cxxbdrdxmvb4v"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_c4i4u"]
+[ext_resource type="Texture2D" uid="uid://conwg6hlhc46r" path="res://Graphics/Bullets/split_shot.aseprite" id="2_caetp"]
+
+[resource]
+script = ExtResource("1_c4i4u")
+size = 0.4
+speed = 12.0
+max_bounce = 2
+sprite = ExtResource("2_caetp")
+bullet_color = Color(0.674004, 0.36093, 0.227636, 1)
+explosion_range = 0.0
+split_quantity = 0

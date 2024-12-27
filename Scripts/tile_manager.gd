@@ -65,14 +65,22 @@ func manage_interaction(position: Vector2i) -> bool:
 		var tile_interaction: int = tile.get_custom_data("Interaction")
 		if tile_interaction == -1:
 			level_manager.win_level()
-		elif tile_interaction == 0:
+		elif tile_interaction == 0 or tile_interaction == 3:
 			return false
 		elif tile_interaction == 1:
 			level_manager.kill_player()
+		elif tile_interaction == 2:
+			level_manager.add_gear()
+			obstacles.erase_cell(position)
 	return true
 
 func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
 	var tile_position: Vector2i = obstacles.local_to_map(position) + offset
 	if obstacles.get_cell_tile_data(tile_position):
+		if obstacles.get_cell_tile_data(tile_position).get_custom_data("Interaction") == 3:
+			destroy_gear(tile_position)
 		return obstacles.get_cell_tile_data(tile_position).get_custom_data("KillBullet")
 	return false
+
+func destroy_gear(position: Vector2i) -> void:
+	obstacles.set_cell(position, 0, Vector2i(3, 1))
