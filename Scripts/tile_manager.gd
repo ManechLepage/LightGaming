@@ -2,7 +2,7 @@ class_name TileManager
 extends Node2D
 
 @onready var background: TileMapLayer = $Background
-@onready var obstacles: TileMapLayer = $Obstacles
+var obstacles: TileMapLayer
 @onready var player: TileMapLayer = $Player
 
 @onready var level_manager: LevelManager = %LevelManager
@@ -16,9 +16,8 @@ var player_position: Vector2i
 # 0: Wall
 # 1: Death
 
-func _ready() -> void:
-	print(gun is GunDisplay)
-	player_position = player.get_used_cells()[0]
+func set_player(position: Vector2i):
+	player_position = position
 
 func _process(delta: float) -> void:
 	update_player()
@@ -84,3 +83,7 @@ func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
 
 func destroy_gear(position: Vector2i) -> void:
 	obstacles.set_cell(position, 0, Vector2i(3, 1))
+
+func load_obstacles(level: Level) -> void:
+	obstacles = level.obstacles.instantiate()
+	add_child(obstacles)

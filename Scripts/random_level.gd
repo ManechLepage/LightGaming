@@ -7,5 +7,5 @@ extends Node
 func get_random_environment() -> Texture2D:
 	return environments.pick_random()
 
-func get_random_obstacle(difficulty: int) -> TileMapLayer:
+func get_random_obstacle(difficulty: int) -> Level:
 	return obstacles.pick_random()
