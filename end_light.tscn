@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm3wx7kw8igim"]
+
+[ext_resource type="Texture2D" uid="uid://db0h741mp1pyj" path="res://Graphics/light_map2.aseprite" id="1_o0va1"]
+
+[node name="EndLight" type="PointLight2D"]
+energy = 0.8
+texture = ExtResource("1_o0va1")
+texture_scale = 0.45

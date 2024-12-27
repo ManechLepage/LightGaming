@@ -9,7 +9,7 @@ var obstacles: TileMapLayer
 @onready var bullets: Node2D = %Bullets
 @onready var gun: GunDisplay = %Gun
 
-@onready var end_light: PointLight2D = %EndLight
+@onready var light: PointLight2D = %EndLight
 
 
 var player_position: Vector2i
@@ -21,9 +21,11 @@ var player_position: Vector2i
 
 func set_player(position: Vector2i):
 	player_position = position
+	print(player_position)
 	call_deferred("update_player")
 
 func _process(delta: float) -> void:
+	print(player_position)
 	update_player()
 	update_gun()
 
@@ -79,6 +81,7 @@ func manage_interaction(position: Vector2i) -> bool:
 		elif tile_interaction == 2:
 			level_manager.add_gear()
 			obstacles.erase_cell(position)
+			destroy_light(position)
 	return true
 
 func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
@@ -89,20 +92,34 @@ func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
 		return obstacles.get_cell_tile_data(tile_position).get_custom_data("KillBullet")
 	return false
 
+var lights = []
+func duplicate_light(position: Vector2i):
+	var new_light = light.duplicate()
+	add_child(new_light)
+
+
 func destroy_gear(position: Vector2i) -> void:
 	obstacles.set_cell(position, 0, Vector2i(3, 1))
-
+	duplicate_light(position)
+	lights.append(position)
+func destroy_light(position: Vector2i):
+	for l in lights:
+		if l == position:
+			light.queue_free()
+			
+	
 func load_obstacles(level: Level) -> void:
 	if obstacles:
 		obstacles.queue_free()
 	obstacles = level.obstacles.instantiate()
 	add_child(obstacles)
 
+	
 func place_end_light() -> void:
 	for i in obstacles.get_used_cells():
 		if obstacles.get_cell_tile_data(i):
 			if obstacles.get_cell_tile_data(i).get_custom_data("Interaction") == -1:
-				end_light.position = obstacles.map_to_local(i)
+				light.position = obstacles.map_to_local(i)
 
 func load_end_light() -> void:
 	call_deferred("place_end_light")
