@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
-[ext_resource type="Texture2D" uid="uid://bxv5igi34jjqr" path="res://Graphics/Gun/revolver.aseprite" id="10_oqffm"]
+[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
 [ext_resource type="Texture2D" uid="uid://ckx7a4868qy1i" path="res://Graphics/UI/heart.aseprite" id="14_01i7l"]
@@ -57,11 +57,10 @@ bullet_display = ExtResource("9_t07wy")
 split_shot_bullet = ExtResource("10_bp7su")
 
 [node name="Sprite" type="Sprite2D" parent="Gun"]
-position = Vector2(15, 0)
-texture = ExtResource("10_oqffm")
+texture = ExtResource("9_pk2aw")
 
 [node name="ShotPosition" type="Node2D" parent="Gun"]
-position = Vector2(22, 0)
+position = Vector2(6.5, -16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
@@ -73,6 +72,7 @@ unique_name_in_owner = true
 script = ExtResource("7_atwix")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="EnvironmentLight" type="PointLight2D" parent="."]
