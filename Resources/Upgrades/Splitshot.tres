@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bdap08s8167fo"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_4ygw8"]
+
+[resource]
+script = ExtResource("1_4ygw8")
+positive = true
+name = &"+1 Splitshot Bullet"
+rare = true

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://7kksgccdpfv6"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_cc5s4"]
+
+[resource]
+script = ExtResource("1_cc5s4")
+positive = false
+name = &"-1 Range"
+rare = false

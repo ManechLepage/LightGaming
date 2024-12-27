@@ -12,4 +12,5 @@ max_bounce = 3
 sprite = ExtResource("2_odvx8")
 bullet_color = Color(0.876789, 0.651024, 0.641703, 1)
 explosion_range = 0.0
-split_quantity = 3
+split_quantity = 0
+is_explosion_deadly = false

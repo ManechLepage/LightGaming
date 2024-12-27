@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bh8dr42en3adh"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_7brgt"]
+
+[resource]
+script = ExtResource("1_7brgt")
+positive = true
+name = &"+1 Explosion Range"
