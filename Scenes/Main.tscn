@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
@@ -89,6 +89,7 @@ texture_scale = 0.18
 unique_name_in_owner = true
 
 [node name="Darkness" type="CanvasModulate" parent="Level"]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="Level"]
@@ -106,7 +107,7 @@ texture = ExtResource("13_cl2ex")
 texture_scale = 0.22
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cl2t")
@@ -307,6 +308,7 @@ vertical_alignment = 1
 [connection signal="switch_bullet_left" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_left"]
 [connection signal="switch_bullet_right" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_right"]
 [connection signal="hurt" from="LevelManager" to="CanvasLayer/GameUI/Health" method="hurt"]
+[connection signal="update_bullets" from="LevelManager" to="CanvasLayer/GameUI/Money/Bullets" method="_on_level_manager_update_bullets"]
 [connection signal="update_gear" from="LevelManager" to="CanvasLayer/GameUI/Money/Gears" method="_on_level_manager_update_gear"]
 [connection signal="load_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]

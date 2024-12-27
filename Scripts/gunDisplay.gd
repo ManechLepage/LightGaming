@@ -46,3 +46,6 @@ func generate_split_bullet(position: Vector2, index: int):
 	var bullet: BulletGraph = bullet_display.instantiate()
 	bullets.add_child(bullet)
 	bullet.load_bullet(split_shot_bullet, position, index * PI / 3)
+
+func get_bullet_quantity() -> int:
+	return gun.get_bullet_quantity()

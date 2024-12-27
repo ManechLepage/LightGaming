@@ -8,6 +8,7 @@ extends Node
 @onready var level_label: Label = %LevelLabel
 
 var gear_quantity: int = 0
+var bullet_quantity: int = 0
 
 var current_bullet_index = 0
 var difficulty: int = 0
@@ -15,6 +16,7 @@ var health: int = 3
 
 signal change_bullet(index: int)
 signal update_gear(value: int)
+signal update_bullets(value: int)
 signal hurt
 
 func _ready() -> void:

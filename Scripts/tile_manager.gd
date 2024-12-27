@@ -21,11 +21,9 @@ var player_position: Vector2i
 
 func set_player(position: Vector2i):
 	player_position = position
-	print(player_position)
 	call_deferred("update_player")
 
 func _process(delta: float) -> void:
-	print(player_position)
 	update_player()
 	update_gun()
 
@@ -70,6 +68,8 @@ func manage_interaction(position: Vector2i) -> bool:
 		var tile_interaction: int = tile.get_custom_data("Interaction")
 		if tile_interaction == -1:
 			level_manager.win_level()
+			level_manager.bullet_quantity = gun.get_bullet_quantity()
+			level_manager.update_bullets.emit(level_manager.bullet_quantity)
 			return false
 		elif tile_interaction == 0 or tile_interaction == 3:
 			return false

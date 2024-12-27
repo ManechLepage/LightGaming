@@ -37,3 +37,10 @@ func switch_right():
 
 func get_bullet() -> Bullet:
 	return bullets[bullet_index]
+
+func get_bullet_quantity() -> int:
+	var count: int = 0
+	for bullet in bullets:
+		if bullet:
+			count += 1
+	return count
