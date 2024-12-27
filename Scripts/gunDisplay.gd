@@ -10,7 +10,7 @@ var current_gun: int
 @onready var bullets: Node2D = %Bullets
 @onready var sprite: Sprite2D = $Sprite
 @onready var shot_position: Node2D = $ShotPosition
-@onready var bullet_slots: Control = $"../CanvasLayer/GameUI/BulletSlots"
+@onready var bullet_slots: Control = %BulletSlots
 
 signal load_bullets(bullets: Array[Bullet])
 signal update_bullets(bullets: Array[Bullet])
