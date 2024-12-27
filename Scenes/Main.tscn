@@ -89,7 +89,6 @@ texture_scale = 0.18
 unique_name_in_owner = true
 
 [node name="Darkness" type="CanvasModulate" parent="Level"]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="Level"]
@@ -104,7 +103,7 @@ texture_scale = 2.55
 unique_name_in_owner = true
 energy = 0.8
 texture = ExtResource("13_cl2ex")
-texture_scale = 0.22
+texture_scale = 0.45
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
