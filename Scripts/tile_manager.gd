@@ -70,7 +70,7 @@ func manage_interaction(position: Vector2i) -> bool:
 		elif tile_interaction == 1:
 			level_manager.kill_player()
 		elif tile_interaction == 2:
-			print("+1 Gear")
+			level_manager.add_gear()
 			obstacles.erase_cell(position)
 	return true
 

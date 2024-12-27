@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=21 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
 [ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
-[ext_resource type="Texture2D" uid="uid://b4wl75u68kh1t" path="res://Graphics/Environment/Environment1_1.aseprite" id="10_nltqk"]
 [ext_resource type="Texture2D" uid="uid://bxv5igi34jjqr" path="res://Graphics/Gun/revolver.aseprite" id="10_oqffm"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
@@ -20,43 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://deqjjpo3ppnj8" path="res://Graphics/UI/gear.aseprite" id="18_mslhg"]
 [ext_resource type="Script" path="res://Scripts/UI/gear_ui.gd" id="18_qbgws"]
 [ext_resource type="FontFile" uid="uid://61wtx5m3f10l" path="res://Graphics/upheavtt.ttf" id="19_eowuw"]
-
-[sub_resource type="Animation" id="Animation_jb8i3"]
-resource_name = "Environment1"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("8_pamyw"), ExtResource("10_nltqk")]
-}
-
-[sub_resource type="Animation" id="Animation_5551p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_pamyw")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8j6b"]
-_data = {
-"Environment1": SubResource("Animation_jb8i3"),
-"RESET": SubResource("Animation_5551p")
-}
 
 [sub_resource type="Environment" id="Environment_0cl2t"]
 ambient_light_source = 1
@@ -121,14 +83,6 @@ color = Color(0, 0, 0, 1)
 energy = 0.5
 texture = ExtResource("8_pamyw")
 texture_scale = 2.55
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EnvironmentLight"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_x8j6b")
-}
-autoplay = "Environment1"
-speed_scale = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cl2t")
@@ -257,6 +211,7 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 vertical_alignment = 1
 
+[connection signal="update_gear" from="LevelManager" to="CanvasLayer/GameUI/Gears" method="_on_level_manager_update_gear"]
 [connection signal="load_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
 [connection signal="shoot" from="InputManager" to="Gun" method="shoot"]

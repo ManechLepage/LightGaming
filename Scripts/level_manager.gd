@@ -7,17 +7,19 @@ extends Node
 @onready var gun: GunDisplay = %Gun
 
 @export var levels: Array[Level]
+var gear_quantity: int = 0
 
 var current_bullet_index = 0
 
 signal change_bullet(index: int)
+signal update_gear(value: int)
 
 func _ready() -> void:
 	load_level(levels[0])
+	update_gear.emit(gear_quantity)
 
 func load_level(level: Level) -> void:
 	gun.reset()
-	animation_player.play(level.environment_lighting)
 	current_bullet_index = 0
 
 func win_level():
@@ -32,3 +34,7 @@ func _on_input_manager_switch_bullet_left() -> void:
 
 func _on_input_manager_switch_bullet_right() -> void:
 	gun.switch_gun_right()
+
+func add_gear():
+	gear_quantity += 1
+	update_gear.emit(gear_quantity)
