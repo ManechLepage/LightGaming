@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=20 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -7,10 +7,11 @@
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
 [ext_resource type="Texture2D" uid="uid://ckx7a4868qy1i" path="res://Graphics/UI/heart.aseprite" id="14_01i7l"]
@@ -19,10 +20,13 @@
 [ext_resource type="FontFile" uid="uid://61wtx5m3f10l" path="res://Graphics/upheavtt.ttf" id="19_eowuw"]
 
 [sub_resource type="Environment" id="Environment_0cl2t"]
+background_mode = 3
 ambient_light_source = 1
 ambient_light_energy = 0.0
-glow_enabled = true
-glow_intensity = 1.49
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_hdr_threshold = 0.11
+glow_hdr_luminance_cap = 17.3
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -57,10 +61,18 @@ bullet_display = ExtResource("9_t07wy")
 split_shot_bullet = ExtResource("10_bp7su")
 
 [node name="Sprite" type="Sprite2D" parent="Gun"]
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_pk2aw")
 
 [node name="ShotPosition" type="Node2D" parent="Gun"]
 position = Vector2(6.5, -16)
+
+[node name="PointLight2D" type="PointLight2D" parent="Gun"]
+position = Vector2(4, -2)
+energy = 0.8
+texture = ExtResource("10_ydagp")
+texture_scale = 0.18
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)

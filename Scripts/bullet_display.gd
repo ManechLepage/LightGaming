@@ -53,6 +53,7 @@ func kill_bullet() -> void:
 		sprite_2d.visible = false
 		point_light_2d.scale = Vector2.ZERO
 		var tween = create_tween()
-		tween.tween_property(point_light_2d, "scale", Vector2(bullet.explosion_range, bullet.explosion_range), bullet.explosion_range * 0.2).set_ease(Tween.EASE_OUT)
+		tween.tween_property(point_light_2d, "scale", Vector2(bullet.explosion_range, bullet.explosion_range), bullet.explosion_range * 0.3).set_ease(Tween.EASE_OUT)
+		tween.tween_property(point_light_2d, "scale", Vector2.ZERO, bullet.explosion_range * 0.1).set_ease(Tween.EASE_IN)
 		await tween.finished
 	queue_free()
