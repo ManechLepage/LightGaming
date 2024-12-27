@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=25 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -6,14 +6,20 @@
 [ext_resource type="Script" path="res://Scripts/level.gd" id="2_r1ls2"]
 [ext_resource type="Resource" uid="uid://c5sek0urf2avc" path="res://Resources/Levels/Level1.tres" id="3_h64wn"]
 [ext_resource type="TileSet" uid="uid://bcekh5tporvjb" path="res://Resources/TileSet/Player.tres" id="3_lx75w"]
-[ext_resource type="PackedScene" uid="uid://cg5vye7h1dhpb" path="res://Scenes/gun.tscn" id="4_3axs8"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
+[ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
+[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="Texture2D" uid="uid://b4wl75u68kh1t" path="res://Graphics/Environment/Environment1_1.aseprite" id="10_nltqk"]
+[ext_resource type="Texture2D" uid="uid://bxv5igi34jjqr" path="res://Graphics/Gun/revolver.aseprite" id="10_oqffm"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
 [ext_resource type="Texture2D" uid="uid://ckx7a4868qy1i" path="res://Graphics/UI/heart.aseprite" id="14_01i7l"]
+[ext_resource type="Texture2D" uid="uid://deqjjpo3ppnj8" path="res://Graphics/UI/gear.aseprite" id="18_mslhg"]
+[ext_resource type="Script" path="res://Scripts/UI/gear_ui.gd" id="18_qbgws"]
+[ext_resource type="FontFile" uid="uid://61wtx5m3f10l" path="res://Graphics/upheavtt.ttf" id="19_eowuw"]
 
 [sub_resource type="Animation" id="Animation_jb8i3"]
 resource_name = "Environment1"
@@ -74,7 +80,7 @@ tile_map_data = PackedByteArray("AAD5//z/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAA
 tile_set = ExtResource("2_gy4u0")
 
 [node name="Obstacles" type="TileMapLayer" parent="TileManager"]
-tile_map_data = PackedByteArray("AAD4//z/AAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD8//7/AAAAAAEAAAD8////AAABAAEAAAD8/wAAAAABAAEAAAD8/wEAAAAAAAEAAAAAAPz/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAEAP7/AAAAAAEAAAAEAP//AAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAAAAAEAAAAGAAEAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAD4//z/AAAAAAAAAAD4/wMAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD8//7/AAAAAAEAAAD8////AAABAAEAAAD8/wAAAAABAAEAAAD8/wEAAAAAAAEAAAAAAPz/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAEAP7/AAAAAAEAAAAEAP//AAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAAAAAEAAAAGAAEAAAABAAAAAAD5//z/AAACAAAAAAD6//z/AAACAAAAAAD5/wEAAAACAAEAAAD6/wEAAAACAAEAAAD7/wEAAAACAAEAAAA=")
 tile_set = ExtResource("2_gy4u0")
 rendering_quadrant_size = 32
 
@@ -82,10 +88,21 @@ rendering_quadrant_size = 32
 tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAA=")
 tile_set = ExtResource("3_lx75w")
 
-[node name="Gun" parent="." instance=ExtResource("4_3axs8")]
+[node name="Gun" type="Node2D" parent="." groups=["Gun"]]
 unique_name_in_owner = true
+texture_filter = 1
 position = Vector2(12, -13)
+script = ExtResource("7_uca61")
 gun = ExtResource("8_wjyx6")
+bullet_display = ExtResource("9_t07wy")
+split_shot_bullet = ExtResource("10_bp7su")
+
+[node name="Sprite" type="Sprite2D" parent="Gun"]
+position = Vector2(15, 0)
+texture = ExtResource("10_oqffm")
+
+[node name="ShotPosition" type="Node2D" parent="Gun"]
+position = Vector2(22, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
@@ -97,6 +114,7 @@ unique_name_in_owner = true
 script = ExtResource("7_atwix")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="EnvironmentLight" type="PointLight2D" parent="."]
@@ -197,10 +215,50 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("14_01i7l")
 
+[node name="Gears" type="Control" parent="CanvasLayer/GameUI"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 46.0
+grow_horizontal = 0
+script = ExtResource("18_qbgws")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Gears"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("18_mslhg")
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/Gears"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -9.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+vertical_alignment = 1
+
 [connection signal="load_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
 [connection signal="shoot" from="InputManager" to="Gun" method="shoot"]
 [connection signal="switch_bullet_left" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_left"]
 [connection signal="switch_bullet_right" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_right"]
-
-[editable path="Gun"]

@@ -3,6 +3,7 @@ extends Node2D
 
 @export var gun: Gun
 @export var bullet_display: PackedScene
+@export var split_shot_bullet: Bullet
 
 var current_gun: int
 
@@ -40,3 +41,8 @@ func switch_gun_right():
 
 func update_gun():
 	sprite.texture = gun.sprite
+
+func generate_split_bullet(position: Vector2, index: int):
+	var bullet: BulletGraph = bullet_display.instantiate()
+	bullets.add_child(bullet)
+	bullet.load_bullet(split_shot_bullet, position, index * PI / 3)

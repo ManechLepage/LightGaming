@@ -6,9 +6,10 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_mtm80")
-range = 0.5
 size = 0.8
 speed = 7.0
 max_bounce = 3
 sprite = ExtResource("2_odvx8")
 bullet_color = Color(0.876789, 0.651024, 0.641703, 1)
+explosion_range = 0.0
+split_quantity = 3

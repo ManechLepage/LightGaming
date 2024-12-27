@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg5vye7h1dhpb"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_k4he3"]
+[ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="1_k4he3"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="2_4u44f"]
 [ext_resource type="Texture2D" uid="uid://bxv5igi34jjqr" path="res://Graphics/Gun/revolver.aseprite" id="2_ugn0s"]
 
