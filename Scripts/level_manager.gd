@@ -7,6 +7,10 @@ extends Node
 @onready var gun: GunDisplay = %Gun
 @onready var level_label: Label = %LevelLabel
 
+@onready var shop_1: Control = %Shop1
+@onready var shop_2: Control = %Shop2
+@onready var shop_3: Control = %Shop3
+
 var gear_quantity: int = 0
 var bullet_quantity: int = 0
 

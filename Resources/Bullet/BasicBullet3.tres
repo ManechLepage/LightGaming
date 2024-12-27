@@ -13,3 +13,4 @@ sprite = ExtResource("2_5eev1")
 bullet_color = Color(0.659029, 0.714076, 0.860638, 1)
 explosion_range = 0.0
 split_quantity = 1
+is_explosion_deadly = false
