@@ -23,6 +23,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 [autoload]
 
 GlobalValues="*res://Scripts/global_values.gd"
+RandomLevel="*res://Scenes/random_level.tscn"
 
 [editor_plugins]
 

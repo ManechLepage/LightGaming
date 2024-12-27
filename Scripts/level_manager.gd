@@ -10,6 +10,7 @@ extends Node
 var gear_quantity: int = 0
 
 var current_bullet_index = 0
+var difficulty: int = 0
 
 signal change_bullet(index: int)
 signal update_gear(value: int)
