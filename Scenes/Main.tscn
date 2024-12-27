@@ -49,7 +49,6 @@ script = ExtResource("1_uvd5o")
 
 [node name="Level" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="TileManager" type="Node2D" parent="Level" groups=["Tile"]]
 unique_name_in_owner = true
@@ -95,6 +94,7 @@ texture_scale = 0.18
 unique_name_in_owner = true
 
 [node name="Darkness" type="CanvasModulate" parent="Level"]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="Level"]
@@ -212,7 +212,7 @@ text = "0"
 vertical_alignment = 1
 
 [node name="GameUI" type="Control" parent="CanvasLayer"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,6 +312,7 @@ text = "Level - 1"
 
 [node name="Shop1" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15

@@ -7,6 +7,9 @@ extends Node
 @onready var gun: GunDisplay = %Gun
 @onready var level_label: Label = %LevelLabel
 
+@onready var level: Node2D = %Level
+@onready var game_ui: Control = %GameUI
+
 @onready var shop_1: Control = %Shop1
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
@@ -41,7 +44,7 @@ func load_level() -> void:
 
 func win_level():
 	if difficulty % 3 == 0:
-		print("LOAD SHOP")
+		load_shop()
 	else:
 		load_level()
 
@@ -60,3 +63,23 @@ func _on_input_manager_switch_bullet_right() -> void:
 func add_gear():
 	gear_quantity += 1
 	update_gear.emit(gear_quantity)
+
+func load_shop() -> void:
+	level.visible = false
+	game_ui.visible = false
+	var shop_index: int = randi_range(1, 3)
+	if shop_index == 1:
+		shop_1.visible = true
+	elif shop_index == 2:
+		shop_2.visible = true
+	else:
+		shop_3.visible = true
+
+func quit_shop() -> void:
+	shop_1.visible = false
+	shop_2.visible = false
+	shop_3.visible = false
+	game_ui.visible = true
+	level.visible = true
+	
+	load_level()
