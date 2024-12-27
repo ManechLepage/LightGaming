@@ -106,3 +106,12 @@ func place_end_light() -> void:
 
 func load_end_light() -> void:
 	call_deferred("place_end_light")
+
+func place_random_obstacles(difficulty: int) -> void:
+	for tile in obstacles.get_used_cells():
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(0, 0):
+			var atlas_coords: Vector2i = RandomLevel.get_random_tile(difficulty)
+			if atlas_coords == Vector2i(-1, -1):
+				obstacles.erase_cell(atlas_coords)
+			else:
+				obstacles.set_cell(tile, 0, atlas_coords)
