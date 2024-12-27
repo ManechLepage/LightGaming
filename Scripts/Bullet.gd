@@ -14,6 +14,8 @@ extends Resource
 
 @export var split_quantity: int
 
+@export var is_explosion_deadly: bool = false
+
 var bounce_count: int
 
 func bounce() -> bool:

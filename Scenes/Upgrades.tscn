@@ -1,0 +1,17 @@
+[gd_scene load_steps=11 format=3 uid="uid://cybpokp2uc44x"]
+
+[ext_resource type="Script" path="res://Scripts/upgrades.gd" id="1_ijje7"]
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="2_uytnj"]
+[ext_resource type="Resource" uid="uid://cnuw6rdep3rek" path="res://Resources/Upgrades/Bounce.tres" id="3_7xvgi"]
+[ext_resource type="Resource" uid="uid://bs60njmy52e8o" path="res://Resources/Upgrades/DeadlyExplosion.tres" id="4_yrj1i"]
+[ext_resource type="Resource" uid="uid://bh8dr42en3adh" path="res://Resources/Upgrades/ExplosionRange.tres" id="5_rrpd0"]
+[ext_resource type="Resource" uid="uid://cbu4fmrxesisg" path="res://Resources/Upgrades/Range.tres" id="6_1qcsh"]
+[ext_resource type="Resource" uid="uid://da0oidqg852ur" path="res://Resources/Upgrades/Slowness.tres" id="7_c8tcq"]
+[ext_resource type="Resource" uid="uid://bdap08s8167fo" path="res://Resources/Upgrades/Splitshot.tres" id="8_lh80i"]
+[ext_resource type="Resource" uid="uid://7kksgccdpfv6" path="res://Resources/Upgrades/RangeDebuff.tres" id="9_8a65j"]
+[ext_resource type="Resource" uid="uid://s7xm7mawvlfj" path="res://Resources/Upgrades/SlownessDebuff.tres" id="10_5gjk7"]
+
+[node name="Upgrade" type="Node"]
+script = ExtResource("1_ijje7")
+buffs = Array[ExtResource("2_uytnj")]([ExtResource("3_7xvgi"), ExtResource("4_yrj1i"), ExtResource("5_rrpd0"), ExtResource("6_1qcsh"), ExtResource("7_c8tcq"), ExtResource("8_lh80i")])
+debuffs = Array[ExtResource("2_uytnj")]([ExtResource("9_8a65j"), ExtResource("10_5gjk7")])
