@@ -14,6 +14,7 @@ signal buy
 signal apply_upgrade(buff: Upgrade, debuff: Upgrade)
 
 func load_item() -> void:
+	control.visible = true
 	var data = Upgrades.generate_upgrade()
 	buff = data[0]
 	if data.size() > 1:
