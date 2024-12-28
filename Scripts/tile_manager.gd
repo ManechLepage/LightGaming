@@ -124,7 +124,6 @@ func place_end_light() -> void:
 func load_end_light() -> void:
 	call_deferred("place_end_light")
 
-var flame = [Vector2i(4,0),Vector2i(5,0),Vector2i(4,1),Vector2i(5,1),Vector2i(4,2),Vector2i(1,0)]
 func place_random_obstacles(difficulty: int) -> void:
 	for tile in obstacles.get_used_cells():
 		if obstacles.get_cell_atlas_coords(tile) == Vector2i(0, 0):
@@ -134,56 +133,6 @@ func place_random_obstacles(difficulty: int) -> void:
 			else:
 				obstacles.set_cell(tile, 0, atlas_coords)
 	for tile in obstacles.get_used_cells():
-		if (obstacles.get_cell_atlas_coords(tile) in flame) or obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0):
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0):
 			call_deferred("duplicate_light",tile)
-		if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,0):
-			call_deferred("flamethrower",tile)
-		
-func flamethrower(position: Vector2i):
-	var pos: Vector2i
-	var l = []
-	var r = []
-	var u = []
-	var d = []
-	pos = position
-	var switch: bool
-	switch = true
-	while switch:
-		if pos + Vector2i(1,0) not in obstacles.get_used_cells():
-			pos += Vector2i(1,0)
-			r.append(pos)
-		else:
-			switch = false
-	switch = true
-	pos = position
-	while switch:
-		if pos + Vector2i(-1,0) not in obstacles.get_used_cells():
-			pos += Vector2i(-1,0)
-			l.append(pos)
-		else:
-			switch = false
-	switch = true
-	pos = position
-	while switch:
-		if pos + Vector2i(0,-1) not in obstacles.get_used_cells():
-			pos += Vector2i(0,-1)
-			u.append(pos)
-		else:
-			switch = false
-	switch = true
-	pos = position
-	while switch:
-		if pos + Vector2i(0,1) not in obstacles.get_used_cells():
-			pos += Vector2i(0,1)
-			d.append(pos)
-		else:
-			switch = false
-	for p in r:
-		obstacles.set_cell(p,0,Vector2i(6,0))
-	for p in l:
-		obstacles.set_cell(p,0,Vector2i(6,2))
-	for p in u:
-		obstacles.set_cell(p,0,Vector2i(6,1))
-	for p in d:
-		obstacles.set_cell(p,0,Vector2i(6,3))
-	
+			
