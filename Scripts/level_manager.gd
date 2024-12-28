@@ -68,6 +68,8 @@ func load_level() -> void:
 	next_level.visible = false
 	tile_manager.remove()
 func win_level():
+	if tile_manager.Flamethrow.playing:
+		tile_manager.Flamethrow.stop()
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
 		load_shop()

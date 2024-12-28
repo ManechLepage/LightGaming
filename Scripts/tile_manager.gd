@@ -12,7 +12,7 @@ var obstacles: TileMapLayer
 
 @onready var light: PointLight2D = %EndLight
 @onready var walk: AudioStreamPlayer = %Walk
-@onready var Flamethrow: AudioStreamPlayer = %Flamethrow
+@onready var Flamethrow: AudioStreamPlayer2D = %Flamethrow
 
 var player_position: Vector2i
 var turns = 1
