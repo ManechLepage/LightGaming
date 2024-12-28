@@ -699,6 +699,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("37_hhfu3")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_581fu")
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainMenu"]
 layout_mode = 1
 anchors_preset = 15
@@ -706,10 +715,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.497)
 
 [node name="Menu" type="Control" parent="CanvasLayer/MainMenu"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -766,6 +774,7 @@ theme_override_font_sizes/font_size = 40
 text = "Difficulty: Medium"
 
 [node name="Tutorial" type="Control" parent="CanvasLayer/MainMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -773,7 +782,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainMenu/Tutorial"]
+[node name="Bloc1" type="Panel" parent="CanvasLayer/MainMenu/Tutorial"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -781,13 +790,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -310.0
-offset_top = -206.0
+offset_top = -130.5
 offset_right = 310.0
-offset_bottom = 206.0
+offset_bottom = 130.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainMenu/Tutorial/Panel"]
+[node name="Title" type="Label" parent="CanvasLayer/MainMenu/Tutorial/Bloc1"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -800,7 +809,21 @@ text = "Welcome to Lightcrawler!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/MainMenu/Tutorial/Panel"]
+[node name="Description" type="Label" parent="CanvasLayer/MainMenu/Tutorial/Bloc1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 20
+text = "This is a game where you control a robot through darkness. You can use your gun to shoot bullets that generate light. Be careful because you only have 3 bullets per level and there is a lot of traps. Go to the big red button to finish a level. Try to use the least bullets possible and try to get the most gears possible to buy upgrades in shop. To win, finish 25 levels."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Continue" type="Button" parent="CanvasLayer/MainMenu/Tutorial/Bloc1"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -851,3 +874,4 @@ text = "Continue"
 [connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet3/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button2_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/Menu/Button" to="CanvasLayer/MainMenu" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/Menu/Difficulty" to="CanvasLayer/MainMenu" method="_on_difficulty_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/Tutorial/Bloc1/Continue" to="CanvasLayer/MainMenu" method="_on_continue_pressed"]
