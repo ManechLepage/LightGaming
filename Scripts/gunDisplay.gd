@@ -1,6 +1,9 @@
 class_name GunDisplay
 extends Node2D
 
+@onready var shoot_sound: AudioStreamPlayer = %Shoot
+@onready var shoot_empty: AudioStreamPlayer = %ShootEmpty
+
 @export var gun: Gun
 @export var bullet_display: PackedScene
 @export var split_shot_bullet: Bullet
@@ -23,15 +26,18 @@ func reset() -> void:
 	load_bullets.emit(gun.bullets)
 
 func shoot():
-	if not level_manager.death:	
+	if not level_manager.death:
 		if gun.can_shoot():
 			var bullet_resource: Bullet = gun.shoot()
 			if bullet_resource:
+				shoot_sound.play()
 				var bullet: BulletGraph = bullet_display.instantiate()
 				bullets.add_child(bullet)
 				bullet.load_bullet(bullet_resource, shot_position.global_position, rotation)
 				tile_manager.turns += 1
 				tile_manager.flaming()
+			else:
+				shoot_empty.play()
 		update_bullets.emit(gun.bullets)
 
 func switch_gun_left():

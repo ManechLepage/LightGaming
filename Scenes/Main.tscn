@@ -1,9 +1,11 @@
-[gd_scene load_steps=43 format=4 uid="uid://c54705kb4yoo7"]
+[gd_scene load_steps=45 format=4 uid="uid://c54705kb4yoo7"]
 
 [ext_resource type="AudioStream" uid="uid://b2ccqwgkyfo8k" path="res://Audio/applemax - BackDoorBarry.mp3" id="1_c18r5"]
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
+[ext_resource type="AudioStream" uid="uid://0t37ykehk1hw" path="res://Audio/143609__dwoboyle__weapons-synth-blast-03.wav" id="2_e30y6"]
 [ext_resource type="TileSet" uid="uid://b3d1sbaj86vhp" path="res://Resources/TileSet/Main.tres" id="2_gy4u0"]
+[ext_resource type="AudioStream" uid="uid://cmv3nrb005arh" path="res://Audio/445345_bolkmar_fx-shot-machine-gun (mp3cut (mp3cut.net).wav" id="3_dvr0o"]
 [ext_resource type="TileSet" uid="uid://bcekh5tporvjb" path="res://Resources/TileSet/Player.tres" id="3_lx75w"]
 [ext_resource type="Script" path="res://Scenes/label.gd" id="4_m37hv"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
@@ -59,10 +61,24 @@ texture_filter = 1
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
 stream = ExtResource("1_c18r5")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("2_e30y6")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="ShootEmpty" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("3_dvr0o")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="InputManager" type="Node" parent="."]
 unique_name_in_owner = true
