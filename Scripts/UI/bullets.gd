@@ -1,6 +1,6 @@
 extends Control
 @onready var label: Label = $Label
-@onready var level_manager: LevelManager = %LevelManager
+
 var quantity: int
 
 func load_quantity():

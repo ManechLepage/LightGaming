@@ -3,9 +3,8 @@ extends Control
 @onready var upgrade: Control = $Upgrade
 @onready var apply_upgrade: Control = %ApplyUpgrade
 @onready var level_manager: LevelManager = %LevelManager
-@onready var shopkeep: AnimatedSprite2D = $shopkeeper3
+
 func load_shop():
-	shopkeep.play()
 	upgrade.load_item()
 
 func hide_choices():
