@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=42 format=4 uid="uid://c54705kb4yoo7"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -8,10 +8,10 @@
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
@@ -40,10 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://cofi02ecdd6iy" path="res://Graphics/Bullets/bullet3.aseprite" id="34_inumj"]
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="37_hhfu3"]
 
-[sub_resource type="GDScript" id="GDScript_5oyle"]
-script/source = "extends ColorRect
-"
-
 [sub_resource type="Environment" id="Environment_0cl2t"]
 background_mode = 3
 ambient_light_source = 1
@@ -52,6 +48,10 @@ glow_intensity = 8.0
 glow_strength = 2.0
 glow_hdr_threshold = 0.11
 glow_hdr_luminance_cap = 17.3
+
+[sub_resource type="GDScript" id="GDScript_5oyle"]
+script/source = "extends ColorRect
+"
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -63,44 +63,6 @@ script = ExtResource("7_atwix")
 [node name="LevelManager" type="Node" parent="." groups=["Level"]]
 unique_name_in_owner = true
 script = ExtResource("1_uvd5o")
-
-[node name="ColorRect" type="ColorRect" parent="LevelManager"]
-unique_name_in_owner = true
-offset_left = -222.0
-offset_top = -165.0
-offset_right = 295.0
-offset_bottom = 128.0
-color = Color(0.164706, 0.164706, 0.164706, 0.6)
-script = SubResource("GDScript_5oyle")
-
-[node name="Label" type="Label" parent="LevelManager"]
-unique_name_in_owner = true
-offset_left = -77.0
-offset_top = -48.0
-offset_right = 77.0
-offset_bottom = -19.0
-theme_override_fonts/font = ExtResource("19_eowuw")
-theme_override_font_sizes/font_size = 32
-text = "You died!"
-script = ExtResource("4_m37hv")
-
-[node name="Button2" type="Button" parent="LevelManager"]
-unique_name_in_owner = true
-offset_left = -52.0
-offset_top = -18.0
-offset_right = 48.0
-offset_bottom = 13.0
-theme_override_fonts/font = ExtResource("19_eowuw")
-text = "Enter shop"
-
-[node name="Button" type="Button" parent="LevelManager"]
-unique_name_in_owner = true
-offset_left = -42.0
-offset_top = -18.0
-offset_right = 58.0
-offset_bottom = 13.0
-theme_override_fonts/font = ExtResource("19_eowuw")
-text = "Next level"
 
 [node name="Level" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -271,6 +233,47 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("19_eowuw")
 theme_override_font_sizes/font_size = 40
 text = "Level - 1"
+
+[node name="NextLevel" type="Control" parent="CanvasLayer/GameUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameUI/NextLevel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.164706, 0.164706, 0.164706, 0.6)
+script = SubResource("GDScript_5oyle")
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/NextLevel"]
+unique_name_in_owner = true
+offset_left = 509.0
+offset_top = 276.0
+offset_right = 663.0
+offset_bottom = 305.0
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 32
+text = "You died!"
+script = ExtResource("4_m37hv")
+
+[node name="Button" type="Button" parent="CanvasLayer/GameUI/NextLevel"]
+unique_name_in_owner = true
+offset_left = 526.0
+offset_top = 306.0
+offset_right = 648.0
+offset_bottom = 337.0
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 20
+text = "Next level"
 
 [node name="Shop1" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -740,6 +743,7 @@ text = "0"
 vertical_alignment = 1
 
 [node name="MainMenu" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -895,10 +899,9 @@ text = "Continue"
 [connection signal="hurt" from="LevelManager" to="CanvasLayer/GameUI/Health" method="hurt"]
 [connection signal="update_bullets" from="LevelManager" to="CanvasLayer/Money/Bullets" method="_on_level_manager_update_bullets"]
 [connection signal="update_gear" from="LevelManager" to="CanvasLayer/Money/Gears" method="_on_level_manager_update_gear"]
-[connection signal="pressed" from="LevelManager/Button2" to="LevelManager" method="_on_button_2_pressed"]
-[connection signal="pressed" from="LevelManager/Button" to="LevelManager" method="_on_button_pressed"]
 [connection signal="load_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
+[connection signal="pressed" from="CanvasLayer/GameUI/NextLevel/Button" to="LevelManager" method="_on_button_pressed"]
 [connection signal="apply_upgrade" from="CanvasLayer/Shop1/Items/Upgrade" to="LevelManager" method="set_upgrade"]
 [connection signal="buy" from="CanvasLayer/Shop1/Items/Upgrade" to="CanvasLayer/Shop1" method="hide_choices"]
 [connection signal="apply_upgrade" from="CanvasLayer/Shop1/Items/Upgrade2" to="LevelManager" method="set_upgrade"]

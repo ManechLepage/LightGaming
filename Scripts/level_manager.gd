@@ -15,10 +15,10 @@ extends Node
 @onready var shop_1: Control = %Shop1
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
-@onready var labeld: Label = %Label
 @onready var dark: CanvasModulate = %Darkness
+@onready var next_level: Control = %NextLevel
 @onready var button: Button = %Button
-@onready var button2: Button = %Button2
+
 enum Difficulties {
 	EASY,
 	MEDIUM,
@@ -63,9 +63,8 @@ func load_level() -> void:
 	dark.visible = true
 	death = false
 	color.visible = false
-	labeld.visible = false
-	button.visible = false
-	button2.visible = false
+	next_level.visible = false
+	
 func win_level():
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
@@ -79,11 +78,11 @@ func kill_player():
 	death = true
 	dark.visible = false
 	color.visible = true
-	labeld.visible = true
+	next_level.visible = true
 	if difficulty % 3 == 0:
-		button2.visible = true
+		button.text = "Enter Shop"
 	else:
-		button.visible = true
+		button.text = "Next Level"
 func _on_input_manager_switch_bullet_left() -> void:
 	gun.switch_gun_left()
 
@@ -133,9 +132,3 @@ func apply_upgrade(index: int):
 
 func _on_button_pressed() -> void:
 	win_level()
-	button.visible = false
-	
-
-func _on_button_2_pressed() -> void:
-	win_level()
-	button2.visible = false
