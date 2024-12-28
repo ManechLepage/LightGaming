@@ -60,8 +60,12 @@ unique_name_in_owner = true
 script = ExtResource("1_uvd5o")
 
 [node name="ColorRect" type="ColorRect" parent="LevelManager"]
-offset_right = 40.0
-offset_bottom = 40.0
+unique_name_in_owner = true
+offset_left = -222.0
+offset_top = -165.0
+offset_right = 295.0
+offset_bottom = 128.0
+color = Color(0.164706, 0.164706, 0.164706, 0.6)
 
 [node name="Level" type="Node2D" parent="."]
 unique_name_in_owner = true

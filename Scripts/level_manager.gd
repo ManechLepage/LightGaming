@@ -11,7 +11,7 @@ extends Node
 
 @onready var level: Node2D = %Level
 @onready var game_ui: Control = %GameUI
-
+@onready var color: ColorRect = %ColorRect
 @onready var shop_1: Control = %Shop1
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
@@ -59,6 +59,7 @@ func load_level() -> void:
 	tile_manager.place_random_obstacles(difficulty)
 	dark.visible = true
 	death = false
+	color.visible = false
 func win_level():
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
@@ -71,8 +72,7 @@ func kill_player():
 	hurt.emit()
 	death = true
 	dark.visible = false
-
-
+	color.visible = true
 func _on_input_manager_switch_bullet_left() -> void:
 	gun.switch_gun_left()
 
