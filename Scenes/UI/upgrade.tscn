@@ -64,16 +64,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -44.0
-offset_right = 48.0
-offset_bottom = -21.0
+offset_left = -56.0
+offset_top = -39.0
+offset_right = 133.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.420434, 0.70359, 0.385377, 1)
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.753575, 0.976226, 0, 1)
 theme_override_fonts/font = ExtResource("2_16x8o")
 theme_override_font_sizes/font_size = 20
-text = "+1 Bounce"
+text = "Deadly explosion"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Debuff" type="Label" parent="Control"]
 layout_mode = 1
@@ -82,16 +84,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -42.0
-offset_top = -30.0
-offset_right = 42.0
-offset_bottom = -7.0
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 59.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.920036, 0.192025, 0.242296, 1)
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0.936187, 0.349803, 0.384415, 1)
 theme_override_fonts/font = ExtResource("2_16x8o")
 theme_override_font_sizes/font_size = 20
-text = "+1 Speed"
 
 [node name="TextureButton" type="Button" parent="Control"]
 layout_mode = 1
