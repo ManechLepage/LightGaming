@@ -102,7 +102,7 @@ var lights = []
 func duplicate_light(position: Vector2i, energy):
 	var new_light = light.duplicate()
 	new_light.position = obstacles.map_to_local(position)
-	new_light.texture_scale = energy
+	new_light.energy = energy
 	add_child(new_light)
 	lights.append(new_light)
 
@@ -122,7 +122,6 @@ func load_obstacles(level: Level) -> void:
 		obstacles.queue_free()
 	obstacles = level.obstacles.instantiate()
 	add_child(obstacles)
-	remove()
 
 	
 func place_end_light() -> void:
@@ -145,13 +144,7 @@ func place_random_obstacles(difficulty: int) -> void:
 	for tile in obstacles.get_used_cells():
 		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0) or obstacles.get_cell_atlas_coords(tile) == Vector2i(4, 0):
 			call_deferred("duplicate_light",tile,1)
-
-func remove():
-	for tile in obstacles.get_used_cells():
-		if obstacles.get_cell_atlas_coords(tile) == Vector2i(2, 0):
-			if randi() & 1:
-				obstacles.erase_cell(tile)
-				print('bop')
+			
 func flamethrower(position: Vector2i):
 	var pos: Vector2i
 	var l = []
