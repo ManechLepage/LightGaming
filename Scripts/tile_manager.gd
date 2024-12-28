@@ -215,6 +215,7 @@ func flamethrower(position: Vector2i):
 var sigma = false
 func flaming():
 	Flamethrow.stop()
+	sigma = false
 	if turns % 5 == 3:
 		for tile in obstacles.get_used_cells():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,0):
@@ -228,6 +229,7 @@ func flaming():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,1):
 				obstacles.set_cell(tile, 0, Vector2i(5,1))
 				flamethrower(tile)
+				sigma = true
 			if sigma == true:
 				Flamethrow.play()
 	elif turns % 5 == 1:
