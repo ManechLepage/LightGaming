@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=38 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://4ft4wlap7oi2" path="res://Graphics/shop2.aseprite" id="25_581fu"]
 [ext_resource type="PackedScene" uid="uid://dccjsnq263bw8" path="res://Scenes/UI/upgrade.tscn" id="26_cfyd6"]
 [ext_resource type="PackedScene" uid="uid://bhjkmnru1fss5" path="res://Graphics/shopkeeper2.aseprite" id="26_v3jed"]
+[ext_resource type="Script" path="res://Scripts/UI/shop_3.gd" id="26_yq3v7"]
 [ext_resource type="Texture2D" uid="uid://csvxda7ly2pws" path="res://Graphics/UI/exit_button.aseprite" id="27_1xsnh"]
 [ext_resource type="Texture2D" uid="uid://bmv0bgn57nwwn" path="res://Graphics/shop3.aseprite" id="27_bynh2"]
 [ext_resource type="PackedScene" uid="uid://b3on4wxox7ddv" path="res://Graphics/shopkeeper3.aseprite" id="28_u6s4g"]
@@ -460,6 +461,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("26_yq3v7")
 
 [node name="Background" type="TextureRect" parent="CanvasLayer/Shop3"]
 layout_mode = 1
@@ -475,6 +477,35 @@ position = Vector2(383, 387)
 scale = Vector2(6.09862, 6.1717)
 frame = 8
 frame_progress = 0.928563
+
+[node name="Upgrade" parent="CanvasLayer/Shop3" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -23.0
+offset_right = -179.0
+offset_bottom = 117.0
+grow_horizontal = 0
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/Shop3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -51.0
+offset_right = -61.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("27_1xsnh")
 
 [node name="ApplyUpgrade" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -676,8 +707,11 @@ vertical_alignment = 1
 [connection signal="buy" from="CanvasLayer/Shop2/Items/Upgrade2" to="CanvasLayer/Shop2" method="hide_choices"]
 [connection signal="buy" from="CanvasLayer/Shop2/Items/Upgrade3" to="CanvasLayer/Shop2" method="hide_choices"]
 [connection signal="pressed" from="CanvasLayer/Shop2/ExitButton" to="CanvasLayer/Shop2" method="_on_exit_button_pressed"]
+[connection signal="buy" from="CanvasLayer/Shop3/Upgrade" to="CanvasLayer/Shop3" method="hide_choices"]
+[connection signal="pressed" from="CanvasLayer/Shop3/ExitButton" to="CanvasLayer/Shop3" method="_on_exit_button_pressed"]
 [connection signal="apply_upgrade" from="CanvasLayer/ApplyUpgrade" to="CanvasLayer/Shop1" method="_on_apply_upgrade_apply_upgrade"]
 [connection signal="apply_upgrade" from="CanvasLayer/ApplyUpgrade" to="CanvasLayer/Shop2" method="_on_apply_upgrade_apply_upgrade"]
+[connection signal="apply_upgrade" from="CanvasLayer/ApplyUpgrade" to="CanvasLayer/Shop3" method="_on_apply_upgrade_apply_upgrade"]
 [connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet1/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet2/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button1_pressed"]
 [connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet3/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button2_pressed"]
