@@ -48,6 +48,7 @@ func load_level() -> void:
 	tile_manager.place_random_obstacles(difficulty)
 
 func win_level():
+	tile_manager.turns = 1
 	if difficulty % 3 == 0:
 		load_shop()
 	else:
