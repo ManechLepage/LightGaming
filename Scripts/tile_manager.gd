@@ -4,12 +4,14 @@ extends Node2D
 @onready var background: TileMapLayer = $Background
 var obstacles: TileMapLayer
 @onready var player: TileMapLayer = $Player
+@onready var input_manager: InputManager = %InputManager
 
 @onready var level_manager: LevelManager = %LevelManager
 @onready var bullets: Node2D = %Bullets
 @onready var gun: GunDisplay = %Gun
 
 @onready var light: PointLight2D = %EndLight
+@onready var walk: AudioStreamPlayer = %Walk
 
 
 var player_position: Vector2i
@@ -59,9 +61,11 @@ func _input(event: InputEvent) -> void:
 			new_position += Vector2i(1, 0)
 			s = true
 		
-		if can_move(new_position):
+		if can_move(new_position) and input_manager.gameState == input_manager.GameState.ACTIVE:
 			player_position = new_position
 			if s:
+				walk.pitch_scale = randf_range(0.8, 2.0)
+				walk.play()
 				turns += 1
 				print(turns)
 				s = false

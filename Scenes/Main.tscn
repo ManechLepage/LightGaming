@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://c54705kb4yoo7"]
+[gd_scene load_steps=46 format=4 uid="uid://c54705kb4yoo7"]
 
 [ext_resource type="AudioStream" uid="uid://b2ccqwgkyfo8k" path="res://Audio/applemax - BackDoorBarry.mp3" id="1_c18r5"]
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://b3d1sbaj86vhp" path="res://Resources/TileSet/Main.tres" id="2_gy4u0"]
 [ext_resource type="AudioStream" uid="uid://cmv3nrb005arh" path="res://Audio/445345_bolkmar_fx-shot-machine-gun (mp3cut (mp3cut.net).wav" id="3_dvr0o"]
 [ext_resource type="TileSet" uid="uid://bcekh5tporvjb" path="res://Resources/TileSet/Player.tres" id="3_lx75w"]
+[ext_resource type="AudioStream" uid="uid://bc17bjqfb6s7a" path="res://Audio/Merging.ogg" id="4_46smv"]
 [ext_resource type="Script" path="res://Scenes/label.gd" id="4_m37hv"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
@@ -78,6 +79,12 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("3_dvr0o")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="Walk" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("4_46smv")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="InputManager" type="Node" parent="."]
