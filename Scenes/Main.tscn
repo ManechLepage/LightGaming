@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://c54705kb4yoo7"]
+[gd_scene load_steps=42 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -8,10 +8,10 @@
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
@@ -256,6 +256,7 @@ script = SubResource("GDScript_5oyle")
 
 [node name="Label" type="Label" parent="CanvasLayer/GameUI/NextLevel"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 509.0
 offset_top = 276.0
 offset_right = 663.0
@@ -267,6 +268,7 @@ script = ExtResource("4_m37hv")
 
 [node name="Button" type="Button" parent="CanvasLayer/GameUI/NextLevel"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 526.0
 offset_top = 306.0
 offset_right = 648.0
