@@ -33,3 +33,18 @@ func apply_upgrade(bullet: Bullet, upgrade: Upgrade) -> Bullet:
 		new_bullet.split_quantity += 1
 	
 	return new_bullet
+
+func buy(buff: Upgrade, debuff: Upgrade, bullets: bool, gears: bool) -> bool:
+	if bullets:
+		if GlobalValues.level_manager.bullet_quantity > 0:
+			GlobalValues.level_manager.bullet_quantity -= 1
+			GlobalValues.level_manager.update_bullets.emit(GlobalValues.level_manager.gear_quantity)
+			return true
+	if gears:
+		if GlobalValues.level_manager.gear_quantity > 0:
+			GlobalValues.level_manager.gear_quantity -= 1
+			GlobalValues.level_manager.update_gear.emit(GlobalValues.level_manager.gear_quantity)
+			return true
+	else:
+		return true
+	return false

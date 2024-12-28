@@ -17,16 +17,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xlxi1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 0.619)
-
 [node name="Shelf" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -37,7 +27,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_povfo")
 
-[node name="UpgradeIcon" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 0.619)
+
+[node name="UpgradeIcon" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -49,16 +57,16 @@ offset_bottom = 102.0
 grow_horizontal = 2
 texture = ExtResource("2_us7k3")
 
-[node name="Buff" type="Label" parent="."]
+[node name="Buff" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -42.0
+offset_left = -48.0
 offset_top = -44.0
-offset_right = 42.0
+offset_right = 48.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -67,7 +75,7 @@ theme_override_fonts/font = ExtResource("2_16x8o")
 theme_override_font_sizes/font_size = 20
 text = "+1 Bounce"
 
-[node name="Debuff" type="Label" parent="."]
+[node name="Debuff" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -84,3 +92,14 @@ theme_override_colors/font_color = Color(0.920036, 0.192025, 0.242296, 1)
 theme_override_fonts/font = ExtResource("2_16x8o")
 theme_override_font_sizes/font_size = 20
 text = "+1 Speed"
+
+[node name="TextureButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Control/TextureButton" to="." method="_on_texture_button_pressed"]
