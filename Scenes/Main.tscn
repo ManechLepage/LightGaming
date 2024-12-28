@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://c54705kb4yoo7"]
+[gd_scene load_steps=51 format=4 uid="uid://c54705kb4yoo7"]
 
 [ext_resource type="AudioStream" uid="uid://b2ccqwgkyfo8k" path="res://Audio/applemax - BackDoorBarry.mp3" id="1_c18r5"]
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bmjdra3l7rh2n" path="res://Audio/505751__thehorriblejoke__computer-breaking-sound.wav" id="7_jxnku"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
+[ext_resource type="AudioStream" uid="uid://or1ccccr18e4" path="res://Audio/450045__kyles__paper-shredder-paper-tear-munch-mechanical.wav" id="8_qjov2"]
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
@@ -104,6 +105,13 @@ unique_name_in_owner = true
 stream = ExtResource("7_jxnku")
 volume_db = -20.0
 pitch_scale = 0.84
+
+[node name="BulletDestruction" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("8_qjov2")
+volume_db = -10.0
+pitch_scale = 1.1
+bus = &"SFX"
 
 [node name="Flamethrow" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true
@@ -290,6 +298,7 @@ text = "Level - 1"
 
 [node name="NextLevel" type="Control" parent="CanvasLayer/GameUI"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -311,12 +320,12 @@ script = SubResource("GDScript_5oyle")
 [node name="Label" type="Label" parent="CanvasLayer/GameUI/NextLevel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 509.0
-offset_top = 276.0
-offset_right = 663.0
+offset_left = 488.0
+offset_top = 269.0
+offset_right = 680.0
 offset_bottom = 305.0
 theme_override_fonts/font = ExtResource("19_eowuw")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "You died!"
 script = ExtResource("4_m37hv")
 

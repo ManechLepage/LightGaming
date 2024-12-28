@@ -26,7 +26,10 @@ func load_bullet(_bullet: Bullet, _position: Vector2, angle: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
-		if bullet.bounce() or is_killed():
+		if is_killed():
+			GlobalValues.level_manager.bullet_destruction.play()
+			kill_bullet()
+		if bullet.bounce():
 			kill_bullet()
 
 func _physics_process(delta: float) -> void:
