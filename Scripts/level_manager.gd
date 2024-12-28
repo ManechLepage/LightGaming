@@ -2,10 +2,8 @@ class_name LevelManager
 extends Node
 
 @onready var input_manager: InputManager = %InputManager
-
 @onready var tile_manager: TileManager = %TileManager
 @onready var environment_light: PointLight2D = %EnvironmentLight
-
 @onready var gun: GunDisplay = %Gun
 @onready var level_label: Label = %LevelLabel
 @onready var next: TextureButton = %TextureButton
@@ -21,6 +19,10 @@ extends Node
 @onready var explosion: AudioStreamPlayer = %Explosion
 @onready var money: AudioStreamPlayer = %Money
 @onready var death_sound: AudioStreamPlayer = %Death
+@onready var label: Label = %Label
+@onready var bullet_destruction: AudioStreamPlayer = %BulletDestruction
+
+var is_dead: bool = false
 
 
 enum Difficulties {
@@ -85,17 +87,19 @@ func kill_player():
 	death_sound.play()
 	health -= 1
 	if health == 0:
-		get_tree().reload_current_scene()
+		is_dead = true
+	hurt.emit()
+	death = true
+	dark.visible = false
+	color.visible = true
+	next_level.visible = true
+	if is_dead:
+		button.text = "Restart Game"
+		label.text = "Game Over"
+	elif difficulty % 3 == 0:
+		button.text = "Enter Shop"
 	else:
-		hurt.emit()
-		death = true
-		dark.visible = false
-		color.visible = true
-		next_level.visible = true
-		if difficulty % 3 == 0:
-			button.text = "Enter Shop"
-		else:
-			button.text = "Next Level"
+		button.text = "Next Level"
 
 func _on_input_manager_switch_bullet_left() -> void:
 	gun.switch_gun_left()
@@ -145,6 +149,8 @@ func apply_upgrade(index: int):
 		gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_debuff)
 
 func _on_button_pressed() -> void:
+	if is_dead:
+		get_tree().reload_current_scene()
 	win_level()
 
 func explode():
