@@ -18,6 +18,8 @@ extends Node
 @onready var dark: CanvasModulate = %Darkness
 @onready var next_level: Control = %NextLevel
 @onready var button: Button = %Button
+@onready var explosion: AudioStreamPlayer = %Explosion
+@onready var money: AudioStreamPlayer = %Money
 
 enum Difficulties {
 	EASY,
@@ -25,8 +27,8 @@ enum Difficulties {
 	HARD
 }
 
-var gear_quantity: int = 2
-var bullet_quantity: int = 2
+var gear_quantity: int = 0
+var bullet_quantity: int = 0
 
 var current_bullet_index = 0
 var difficulty: int = 0
@@ -121,6 +123,7 @@ func quit_shop() -> void:
 	load_level()
 
 func set_upgrade(buff: Upgrade, debuff: Upgrade):
+	money.play()
 	current_buff = buff
 	current_debuff = debuff
 
@@ -132,3 +135,7 @@ func apply_upgrade(index: int):
 
 func _on_button_pressed() -> void:
 	win_level()
+
+
+func explode():
+	explosion.play()
