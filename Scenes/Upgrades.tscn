@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cybpokp2uc44x"]
+[gd_scene load_steps=10 format=3 uid="uid://cybpokp2uc44x"]
 
 [ext_resource type="Script" path="res://Scripts/upgrades.gd" id="1_ijje7"]
 [ext_resource type="Script" path="res://Scripts/upgrade.gd" id="2_uytnj"]
@@ -10,13 +10,7 @@
 [ext_resource type="Resource" uid="uid://7kksgccdpfv6" path="res://Resources/Upgrades/RangeDebuff.tres" id="9_8a65j"]
 [ext_resource type="Resource" uid="uid://s7xm7mawvlfj" path="res://Resources/Upgrades/SlownessDebuff.tres" id="10_5gjk7"]
 
-[sub_resource type="Resource" id="Resource_nqsqx"]
-script = ExtResource("2_uytnj")
-positive = true
-name = &"Deadly Explosion"
-rare = true
-
 [node name="Upgrade" type="Node"]
 script = ExtResource("1_ijje7")
-buffs = Array[ExtResource("2_uytnj")]([ExtResource("3_7xvgi"), SubResource("Resource_nqsqx"), ExtResource("5_rrpd0"), ExtResource("6_1qcsh"), ExtResource("7_c8tcq"), ExtResource("8_lh80i")])
+buffs = Array[ExtResource("2_uytnj")]([ExtResource("3_7xvgi"), ExtResource("5_rrpd0"), ExtResource("6_1qcsh"), ExtResource("7_c8tcq"), ExtResource("8_lh80i")])
 debuffs = Array[ExtResource("2_uytnj")]([ExtResource("9_8a65j"), ExtResource("10_5gjk7")])
