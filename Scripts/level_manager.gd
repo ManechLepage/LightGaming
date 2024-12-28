@@ -23,6 +23,9 @@ var current_bullet_index = 0
 var difficulty: int = 0
 var health: int = 3
 
+var current_buff: Upgrade
+var current_debuff: Upgrade
+
 signal change_bullet(index: int)
 signal update_gear(value: int)
 signal update_bullets(value: int)
@@ -95,3 +98,12 @@ func quit_shop() -> void:
 	level.visible = true
 	
 	load_level()
+
+func set_upgrade(buff: Upgrade, debuff: Upgrade):
+	current_buff = buff
+	current_debuff = debuff
+
+func apply_upgrade(index: int):
+	gun.gun.bullets[index] = Upgrades.apply_upgrade(gun.gun.bullets[index], current_buff)
+	if current_debuff:
+		gun.gun.bullets[index] = Upgrades.apply_upgrade(gun.gun.bullets[index], current_debuff)
