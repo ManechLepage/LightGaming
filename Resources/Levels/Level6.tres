@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://c4kciwbrkduaf"]
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://4prvrrint3am"]
 
-[ext_resource type="PackedScene" uid="uid://dyp87vxf3il62" path="res://Scenes/Obstacles/obstacles6.tscn" id="1_5bi0g"]
+[ext_resource type="PackedScene" path="res://Scenes/Obstacles/obstacles6.tscn" id="1_5bi0g"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="2_221ni"]
 
 [resource]

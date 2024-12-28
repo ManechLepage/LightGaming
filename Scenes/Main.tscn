@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=32 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/shop_1.gd" id="23_x0loj"]
 [ext_resource type="PackedScene" uid="uid://c5gt4kwovc33f" path="res://Graphics/shopkeeper1.aseprite" id="24_a6yg7"]
 [ext_resource type="Texture2D" uid="uid://4ft4wlap7oi2" path="res://Graphics/shop2.aseprite" id="25_581fu"]
+[ext_resource type="PackedScene" uid="uid://dccjsnq263bw8" path="res://Scenes/UI/upgrade.tscn" id="26_cfyd6"]
 [ext_resource type="PackedScene" uid="uid://bhjkmnru1fss5" path="res://Graphics/shopkeeper2.aseprite" id="26_v3jed"]
 [ext_resource type="Texture2D" uid="uid://bmv0bgn57nwwn" path="res://Graphics/shop3.aseprite" id="27_bynh2"]
 [ext_resource type="PackedScene" uid="uid://b3on4wxox7ddv" path="res://Graphics/shopkeeper3.aseprite" id="28_u6s4g"]
@@ -337,9 +338,70 @@ position = Vector2(240, 298)
 scale = Vector2(4.88, 4.88)
 
 [node name="Items" type="Control" parent="CanvasLayer/Shop1"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrade" parent="CanvasLayer/Shop1/Items" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -612.0
+offset_top = -381.0
+offset_right = -484.0
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Upgrade2" parent="CanvasLayer/Shop1/Items" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -471.0
+offset_top = -381.0
+offset_right = -343.0
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Upgrade3" parent="CanvasLayer/Shop1/Items" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -332.0
+offset_top = -381.0
+offset_right = -204.0
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Shop1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 211.0
+offset_right = 375.0
+offset_bottom = 265.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "1 Bullet each"
 
 [node name="Shop2" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
