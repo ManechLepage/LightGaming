@@ -3,7 +3,6 @@ extends Node
 @export var buffs: Array[Upgrade]
 @export var debuffs: Array[Upgrade]
 
-
 func generate_upgrade() -> Array[Upgrade]:
 	var upgrade: Array[Upgrade]
 	
@@ -30,7 +29,7 @@ func apply_upgrade(bullet: Bullet, upgrade: Upgrade) -> Bullet:
 		new_bullet.speed = max(0.2, new_bullet.speed * 0.8)
 	elif upgrade.name == "+1 Speed":
 		new_bullet.speed *= 1.1
-	elif upgrade.name == "+1 Splitshot":
+	elif upgrade.name == "+1 Splitshot Bullet":
 		new_bullet.split_quantity += 1
 	
 	return new_bullet

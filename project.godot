@@ -24,7 +24,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 GlobalValues="*res://Scripts/global_values.gd"
 RandomLevel="*res://Scenes/random_level.tscn"
-Upgrades="*res://Scenes/Upgrades.tscn"
+Upgrades="*res://Scripts/upgrades.gd"
 
 [display]
 
