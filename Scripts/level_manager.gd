@@ -18,7 +18,6 @@ extends Node
 @onready var dark: CanvasModulate = %Darkness
 @onready var next_level: Control = %NextLevel
 @onready var button: Button = %Button
-
 enum Difficulties {
 	EASY,
 	MEDIUM,
@@ -64,6 +63,7 @@ func load_level() -> void:
 	death = false
 	color.visible = false
 	next_level.visible = false
+	tile_manager.sigma = true
 	tile_manager.remove()
 func win_level():
 	tile_manager.turns = 1
