@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=53 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="AudioStream" uid="uid://b2ccqwgkyfo8k" path="res://Audio/applemax - BackDoorBarry.mp3" id="1_c18r5"]
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
@@ -21,7 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
 [ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="AudioStream" uid="uid://bql342l88lnn4" path="res://Audio/320776__rhodesmas__action-02.mp3" id="10_w4m0q"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
+[ext_resource type="AudioStream" uid="uid://1454vr4f8ck0" path="res://Audio/220184__gameaudio__win-spacey.mp3" id="11_1vqq6"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
 [ext_resource type="Texture2D" uid="uid://db0h741mp1pyj" path="res://Graphics/light_map2.aseprite" id="13_cl2ex"]
@@ -116,6 +118,12 @@ pitch_scale = 1.1
 unique_name_in_owner = true
 stream = ExtResource("5_m0bsu")
 volume_db = -15.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_w4m0q")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_1vqq6")
 
 [node name="InputManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -815,6 +823,7 @@ grow_vertical = 2
 script = ExtResource("37_hhfu3")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -822,6 +831,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("25_581fu")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainMenu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_ewref")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MainMenu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_bynh2")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainMenu"]
 layout_mode = 1

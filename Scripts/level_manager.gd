@@ -21,6 +21,8 @@ extends Node
 @onready var death_sound: AudioStreamPlayer = %Death
 @onready var label: Label = %Label
 @onready var bullet_destruction: AudioStreamPlayer = %BulletDestruction
+@onready var audio_stream_player: AudioStreamPlayer = $"../Audio/AudioStreamPlayer"
+@onready var audio_stream_player2: AudioStreamPlayer = $"../Audio/AudioStreamPlayer2"
 
 var is_dead: bool = false
 
@@ -74,13 +76,22 @@ func load_level() -> void:
 	tile_manager.remove()
 
 func win_level():
+	tile_manager.turns = 1
 	if tile_manager.Flamethrow.playing:
 		tile_manager.Flamethrow.stop()
-	tile_manager.turns = 1
-	if difficulty % 3 == 0:
+	if difficulty == 25:
+		audio_stream_player.play()
+		audio_stream_player2.play()
+		dark.visible = false
+		color.visible = true
+		next_level.visible = true
+		label.text = "You won!"
+		button.text = "Endless mode"
+	elif difficulty % 3 == 0:
 		load_shop()
 	else:
 		load_level()
+		
 var death = false
 
 func kill_player():
@@ -98,6 +109,9 @@ func kill_player():
 		label.text = "Game Over"
 	elif difficulty % 3 == 0:
 		button.text = "Enter Shop"
+	elif difficulty == 25:
+		button.text = "Endless mode"
+		label.text = "You won!"
 	else:
 		button.text = "Next Level"
 
@@ -152,6 +166,9 @@ func _on_button_pressed() -> void:
 	if is_dead:
 		get_tree().reload_current_scene()
 	win_level()
-
+	if difficulty == 25:
+		load_level()
+		audio_stream_player.stop()
+		audio_stream_player2.stop()
 func explode():
 	explosion.play()

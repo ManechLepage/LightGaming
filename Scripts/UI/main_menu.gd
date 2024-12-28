@@ -5,14 +5,25 @@ extends Control
 @onready var difficulty: Button = $Menu/Difficulty
 @onready var menu: Control = $Menu
 @onready var tutorial: Control = $Tutorial
-
+@onready var Trect: TextureRect = %TextureRect
+@onready var Trect2: TextureRect = %TextureRect2
+@onready var Trect3: TextureRect = %TextureRect3
 var first_time: bool = true
+
+func _ready() -> void:
+	random()
+func random():
+	Trect.visible = false
+	Trect2.visible = false
+	Trect3.visible = false
+	get_child(randi_range(0,2)).visible = true
 
 func _on_button_pressed() -> void:
 	if not first_time:
 		visible = false
 		input_manager.gameState = input_manager.GameState.ACTIVE
 	else:
+		
 		first_time = false
 		tutorial.visible = true
 		menu.visible = false
