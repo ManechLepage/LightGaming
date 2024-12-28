@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://bwe61lt5s5kia"]
+
+[ext_resource type="PackedScene" uid="uid://dq1nh8laj74ct" path="res://Scenes/Obstacles/obstacles18.tscn" id="1_meq5l"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_i68r6"]
+
+[resource]
+script = ExtResource("2_i68r6")
+obstacles = ExtResource("1_meq5l")
+player_pos = Vector2i(-7, -4)

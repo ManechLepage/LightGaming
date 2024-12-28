@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhv2g8sgvo5m2"]
+[gd_scene load_steps=33 format=3 uid="uid://bhv2g8sgvo5m2"]
 
 [ext_resource type="Script" path="res://Scripts/random_level.gd" id="1_hpuj5"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="2_swlcl"]
@@ -22,10 +22,20 @@
 [ext_resource type="Resource" uid="uid://cbcdva0366ung" path="res://Resources/Levels/Level8.tres" id="20_j1781"]
 [ext_resource type="Resource" uid="uid://c8a3oi3vq3ybx" path="res://Resources/Levels/Level9.tres" id="21_evlih"]
 [ext_resource type="Resource" uid="uid://p6n0otie1kek" path="res://Resources/Levels/Level10.tres" id="22_cyfff"]
+[ext_resource type="Resource" uid="uid://gpux4a0py3od" path="res://Resources/Levels/Level11.tres" id="23_04snn"]
+[ext_resource type="Resource" uid="uid://d3er0c7hy22gc" path="res://Resources/Levels/Level12.tres" id="24_405s8"]
+[ext_resource type="Resource" uid="uid://gu3oftl56jkh" path="res://Resources/Levels/Level13.tres" id="25_0p1oy"]
+[ext_resource type="Resource" uid="uid://b8x7g6wt30b66" path="res://Resources/Levels/Level14.tres" id="26_q4ll1"]
+[ext_resource type="Resource" uid="uid://c1or1ghxnfvpo" path="res://Resources/Levels/Level15.tres" id="27_rmqqx"]
+[ext_resource type="Resource" uid="uid://bgib5rocrbu77" path="res://Resources/Levels/Level16.tres" id="28_u25s8"]
+[ext_resource type="Resource" uid="uid://csi64ptorjdgf" path="res://Resources/Levels/Level17.tres" id="29_r1sot"]
+[ext_resource type="Resource" uid="uid://bwe61lt5s5kia" path="res://Resources/Levels/Level18.tres" id="30_kp0mg"]
+[ext_resource type="Resource" uid="uid://bmegcwu3u28x0" path="res://Resources/Levels/Level19.tres" id="31_irqyr"]
+[ext_resource type="Resource" uid="uid://ctd6isvl0d3pf" path="res://Resources/Levels/Level20.tres" id="32_18ie7"]
 
 [node name="RandomLevel" type="Node"]
 script = ExtResource("1_hpuj5")
 environments = Array[Texture2D]([ExtResource("2_swlcl"), ExtResource("3_cv0rf"), ExtResource("4_xjlgh"), ExtResource("5_jrqxt"), ExtResource("6_kd2f3"), ExtResource("7_h2d74"), ExtResource("8_qexr2"), ExtResource("9_xygiw"), ExtResource("10_bj6xn"), ExtResource("11_56d82")])
-obstacles = Array[ExtResource("6_uh6nt")]([ExtResource("7_lmio0"), ExtResource("8_g3ssw"), ExtResource("9_exjyb"), ExtResource("10_w6hse"), ExtResource("17_mdjul"), ExtResource("18_7lg5e"), ExtResource("19_afin7"), ExtResource("20_j1781"), ExtResource("21_evlih"), ExtResource("22_cyfff")])
+obstacles = Array[ExtResource("6_uh6nt")]([ExtResource("7_lmio0"), ExtResource("8_g3ssw"), ExtResource("9_exjyb"), ExtResource("10_w6hse"), ExtResource("17_mdjul"), ExtResource("18_7lg5e"), ExtResource("19_afin7"), ExtResource("20_j1781"), ExtResource("21_evlih"), ExtResource("22_cyfff"), ExtResource("23_04snn"), ExtResource("24_405s8"), ExtResource("25_0p1oy"), ExtResource("26_q4ll1"), ExtResource("27_rmqqx"), ExtResource("28_u25s8"), ExtResource("29_r1sot"), ExtResource("30_kp0mg"), ExtResource("31_irqyr"), ExtResource("32_18ie7")])
 obstacle_data = Array[Vector2i]([Vector2i(3, 0), Vector2i(-1, -1), Vector2i(0, 0), Vector2i(2, 1), Vector2i(2, 0), Vector2i(1, 1), Vector2i(0, 1)])
 obstacle_difficulty = Array[float]([0.2, 0.3, 0.5, 0.4, 0.3, 0.2, 0.1])
