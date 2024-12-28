@@ -22,6 +22,7 @@ extends Node
 @onready var money: AudioStreamPlayer = %Money
 @onready var death_sound: AudioStreamPlayer = %Death
 
+
 enum Difficulties {
 	EASY,
 	MEDIUM,
@@ -46,6 +47,7 @@ signal update_bullets(value: int)
 signal hurt
 
 func _ready() -> void:
+	GlobalValues.load_values()
 	call_deferred("load_level")
 	update_gear.emit(gear_quantity)
 
@@ -83,7 +85,7 @@ func kill_player():
 	death_sound.play()
 	health -= 1
 	if health == 0:
-		get_tree().quit()
+		get_tree().reload_current_scene()
 	else:
 		hurt.emit()
 		death = true
