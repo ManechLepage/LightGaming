@@ -8,7 +8,7 @@ var obstacles: TileMapLayer
 @onready var level_manager: LevelManager = %LevelManager
 @onready var bullets: Node2D = %Bullets
 @onready var gun: GunDisplay = %Gun
-
+@onready var random: RandomLevelGenerator = %RandomLevelGenerator
 @onready var light: PointLight2D = %EndLight
 
 
@@ -41,20 +41,23 @@ func update_gun():
 	gun.update_gun()
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Win"):
+		level_manager.win_level()
 	var new_position: Vector2i = player_position
 	var s = false
-	if Input.is_action_just_pressed("Up"):
-		new_position -= Vector2i(0, 1)
-		s = true
-	elif Input.is_action_just_pressed("Down"):
-		new_position += Vector2i(0, 1)
-		s = true
-	elif Input.is_action_just_pressed("Left"):
-		new_position -= Vector2i(1, 0)
-		s = true
-	elif Input.is_action_just_pressed("Right"):
-		new_position += Vector2i(1, 0)
-		s = true
+	if not level_manager.death:
+		if Input.is_action_just_pressed("Up"):
+			new_position -= Vector2i(0, 1)
+			s = true
+		elif Input.is_action_just_pressed("Down"):
+			new_position += Vector2i(0, 1)
+			s = true
+		elif Input.is_action_just_pressed("Left"):
+			new_position -= Vector2i(1, 0)
+			s = true
+		elif Input.is_action_just_pressed("Right"):
+			new_position += Vector2i(1, 0)
+			s = true
 	
 	if can_move(new_position):
 		player_position = new_position
@@ -99,10 +102,10 @@ func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
 	return false
 
 var lights = []
-func duplicate_light(position: Vector2i, energy):
+func duplicate_light(position: Vector2i, scale):
 	var new_light = light.duplicate()
 	new_light.position = obstacles.map_to_local(position)
-	new_light.energy = energy
+	new_light.texture_scale = scale
 	add_child(new_light)
 	lights.append(new_light)
 
@@ -122,14 +125,14 @@ func load_obstacles(level: Level) -> void:
 		obstacles.queue_free()
 	obstacles = level.obstacles.instantiate()
 	add_child(obstacles)
-
+	remove()
 	
 func place_end_light() -> void:
 	for i in obstacles.get_used_cells():
 		if obstacles.get_cell_tile_data(i):
 			if obstacles.get_cell_tile_data(i).get_custom_data("Interaction") == -1:
 				light.position = obstacles.map_to_local(i)
-
+				light.texture_scale = 1
 func load_end_light() -> void:
 	call_deferred("place_end_light")
 
@@ -143,8 +146,13 @@ func place_random_obstacles(difficulty: int) -> void:
 				obstacles.set_cell(tile, 0, atlas_coords)
 	for tile in obstacles.get_used_cells():
 		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0) or obstacles.get_cell_atlas_coords(tile) == Vector2i(4, 0):
-			call_deferred("duplicate_light",tile,1)
-			
+			call_deferred("duplicate_light",tile,0.4)
+func remove():
+	for tile in obstacles.get_used_cells():
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(2, 0):
+			if randi() & 1:
+				obstacles.erase_cell(tile)
+				print("huzz")
 func flamethrower(position: Vector2i):
 	var pos: Vector2i
 	var l = []
@@ -186,16 +194,12 @@ func flamethrower(position: Vector2i):
 			switch = false
 	for p in r:
 		obstacles.set_cell(p,0,Vector2i(6,0))
-		duplicate_light(p,1)
 	for p in l:
 		obstacles.set_cell(p,0,Vector2i(6,2))
-		duplicate_light(p,1)
 	for p in u:
 		obstacles.set_cell(p,0,Vector2i(6,1))
-		duplicate_light(p,1)
 	for p in d:
 		obstacles.set_cell(p,0,Vector2i(6,3))
-		duplicate_light(p,1)
 func flaming():
 	if turns % 5 == 3:
 		for tile in obstacles.get_used_cells():
@@ -210,6 +214,9 @@ func flaming():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,1):
 				obstacles.set_cell(tile, 0, Vector2i(5,1))
 				flamethrower(tile)
+		for tile in obstacles.get_used_cells():
+			if obstacles.get_cell_atlas_coords(tile) in [Vector2i(6,0),Vector2i(6,1),Vector2i(6,2),Vector2i(6,3)]:
+				duplicate_light(tile,1)
 	elif turns % 5 == 1:
 		for tile in obstacles.get_used_cells():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(5,1):

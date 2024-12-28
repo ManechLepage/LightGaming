@@ -2,16 +2,15 @@ class_name LevelManager
 extends Node
 
 @onready var input_manager: InputManager = %InputManager
-
 @onready var tile_manager: TileManager = %TileManager
 @onready var environment_light: PointLight2D = %EnvironmentLight
-
+@onready var color: ColorRect = %ColorRect
 @onready var gun: GunDisplay = %Gun
 @onready var level_label: Label = %LevelLabel
-
+@onready var died_label: Label = %LabelD
 @onready var level: Node2D = %Level
 @onready var game_ui: Control = %GameUI
-
+@onready var dark: CanvasModulate = %Darkness
 @onready var shop_1: Control = %Shop1
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
@@ -57,20 +56,27 @@ func load_level() -> void:
 	tile_manager.load_obstacles(level)
 	tile_manager.load_end_light()
 	tile_manager.place_random_obstacles(difficulty)
-
+	died_label.visible = false
+	color.visible = false
+	
 func win_level():
 	tile_manager.turns = 1
+	dark.visible = true
+	death = false
 	if difficulty % 3 == 0:
 		load_shop()
 	else:
 		load_level()
-
+var death = false
 func kill_player():
 	health -= 1
 	hurt.emit()
-	win_level()
-
-
+	death = true
+	dark.visible = false
+	color.visible = true
+	for l in tile_manager.lights:
+		l.texture_scale /= 2
+	died_label.visible = true
 func _on_input_manager_switch_bullet_left() -> void:
 	gun.switch_gun_left()
 
