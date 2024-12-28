@@ -249,6 +249,7 @@ grow_vertical = 2
 texture = ExtResource("23_ewref")
 
 [node name="shopkeeper1" parent="CanvasLayer/Shop1" instance=ExtResource("24_a6yg7")]
+unique_name_in_owner = true
 position = Vector2(240, 298)
 scale = Vector2(4.88, 4.88)
 
@@ -359,6 +360,7 @@ grow_vertical = 2
 texture = ExtResource("25_581fu")
 
 [node name="shopkeeper2" parent="CanvasLayer/Shop2" instance=ExtResource("26_v3jed")]
+unique_name_in_owner = true
 position = Vector2(362, 293)
 scale = Vector2(3.22, 3.22)
 
@@ -472,6 +474,7 @@ grow_vertical = 2
 texture = ExtResource("27_bynh2")
 
 [node name="shopkeeper3" parent="CanvasLayer/Shop3" instance=ExtResource("28_u6s4g")]
+unique_name_in_owner = true
 position = Vector2(383, 387)
 scale = Vector2(6.09862, 6.1717)
 frame = 8
