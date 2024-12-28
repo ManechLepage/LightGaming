@@ -35,6 +35,9 @@ func _ready() -> void:
 	update_gear.emit(gear_quantity)
 
 func load_level() -> void:
+	for l in tile_manager.lights:
+		l.queue_free()
+	tile_manager.lights.clear()
 	difficulty += 1
 	level_label.text = "Level - " + str(difficulty)
 	gun.reset()
@@ -68,6 +71,7 @@ func add_gear():
 	gear_quantity += 1
 	update_gear.emit(gear_quantity)
 
+
 func load_shop() -> void:
 	input_manager.gameState = input_manager.GameState.MENU
 	level.visible = false
@@ -81,6 +85,7 @@ func load_shop() -> void:
 		shop_2.load_shop()
 	else:
 		shop_3.visible = true
+
 
 func quit_shop() -> void:
 	input_manager.gameState = input_manager.GameState.ACTIVE
