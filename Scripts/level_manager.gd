@@ -23,6 +23,8 @@ var current_bullet_index = 0
 var difficulty: int = 0
 var health: int = 3
 
+var current_selected_upgrade: Array[Upgrade]
+
 signal change_bullet(index: int)
 signal update_gear(value: int)
 signal update_bullets(value: int)
@@ -77,8 +79,10 @@ func load_shop() -> void:
 	var shop_index: int = randi_range(1, 3)
 	if shop_index == 1:
 		shop_1.visible = true
+		shop_1.load_shop()
 	elif shop_index == 2:
 		shop_2.visible = true
+		shop_2.load_shop()
 	else:
 		shop_3.visible = true
 
