@@ -43,6 +43,8 @@ func update_gun():
 	gun.update_gun()
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("win"):
+		level_manager.win_level()
 	var new_position: Vector2i = player_position
 	var s = false
 	if not level_manager.death:
@@ -88,8 +90,8 @@ func manage_interaction(position: Vector2i) -> bool:
 		var tile: TileData = obstacles.get_cell_tile_data(position)
 		var tile_interaction: int = tile.get_custom_data("Interaction")
 		if tile_interaction == -1:
-			level_manager.bullet_quantity += gun.get_bullet_quantity()
 			level_manager.win_level()
+			level_manager.bullet_quantity += gun.get_bullet_quantity()
 			level_manager.update_bullets.emit(level_manager.bullet_quantity)
 			return false
 		elif tile_interaction == 0 or tile_interaction == 3:
