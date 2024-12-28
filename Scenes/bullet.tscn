@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcvr48f00mrf"]
+[gd_scene load_steps=12 format=3 uid="uid://bcvr48f00mrf"]
 
 [ext_resource type="Script" path="res://Scripts/bullet_display.gd" id="1_377rx"]
 [ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/Bullets/bullet1.aseprite" id="2_tu2bu"]
@@ -52,6 +52,8 @@ _data = {
 "RESET": SubResource("Animation_ag7lk")
 }
 
+[sub_resource type="Gradient" id="Gradient_5sm2h"]
+
 [node name="Bullet" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 2
@@ -81,6 +83,18 @@ libraries = {
 }
 autoplay = "BulletLightMap"
 speed_scale = 2.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 68.42
+initial_velocity_max = 198.9
+color_ramp = SubResource("Gradient_5sm2h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

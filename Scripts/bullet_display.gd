@@ -2,8 +2,10 @@ class_name BulletGraph
 extends RigidBody2D
 
 var bullet: Bullet
+
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 var velocity: Vector2
 var bounce_count: int
@@ -46,6 +48,7 @@ func is_killed() -> bool:
 
 
 func kill_bullet() -> void:
+	cpu_particles_2d.restart()
 	for i in range(bullet.split_quantity):
 		GlobalValues.gun_manager.generate_split_bullet(position, i)
 	if bullet.explosion_range > 0:
