@@ -11,13 +11,16 @@ var buff: Upgrade
 var debuff: Upgrade
 
 signal buy
+signal apply_upgrade(buff: Upgrade, debuff: Upgrade)
 
 func load_item() -> void:
-	pass
+	var data = Upgrades.generate_upgrade()
+	buff = data[0]
+	if data.size() > 1:
+		debuff = data[1]
+	load_upgrade()
 
-func load_upgrade(_buff: Upgrade, _debuff: Upgrade) -> void:
-	buff = _buff
-	debuff = _debuff
+func load_upgrade() -> void:
 	buff_label.text = buff.name
 	if debuff:
 		debuff_label.text = debuff.name
@@ -25,4 +28,5 @@ func load_upgrade(_buff: Upgrade, _debuff: Upgrade) -> void:
 func _on_texture_button_pressed() -> void:
 	if Upgrades.buy(buff, debuff, bullet_price, gear_price):
 		buy.emit()
+		apply_upgrade.emit(buff, debuff)
 		control.visible = false

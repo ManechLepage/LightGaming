@@ -23,6 +23,9 @@ var current_bullet_index = 0
 var difficulty: int = 0
 var health: int = 3
 
+var current_buff: Upgrade
+var current_debuff: Upgrade
+
 signal change_bullet(index: int)
 signal update_gear(value: int)
 signal update_bullets(value: int)
@@ -78,10 +81,13 @@ func load_shop() -> void:
 	var shop_index: int = randi_range(1, 3)
 	if shop_index == 1:
 		shop_1.visible = true
+		shop_1.load_shop()
 	elif shop_index == 2:
 		shop_2.visible = true
+		shop_2.load_shop()
 	else:
 		shop_3.visible = true
+		shop_3.load_shop()
 
 
 func quit_shop() -> void:
@@ -93,3 +99,12 @@ func quit_shop() -> void:
 	level.visible = true
 	
 	load_level()
+
+func set_upgrade(buff: Upgrade, debuff: Upgrade):
+	current_buff = buff
+	current_debuff = debuff
+
+func apply_upgrade(index: int):
+	gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_buff)
+	if current_debuff:
+		gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_debuff)
