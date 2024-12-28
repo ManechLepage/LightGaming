@@ -699,6 +699,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("37_hhfu3")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_581fu")
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainMenu"]
 layout_mode = 1
 anchors_preset = 15
@@ -706,7 +715,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.497)
 
 [node name="Menu" type="Control" parent="CanvasLayer/MainMenu"]
 layout_mode = 1
