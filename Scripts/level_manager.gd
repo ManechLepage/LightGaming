@@ -104,6 +104,6 @@ func set_upgrade(buff: Upgrade, debuff: Upgrade):
 	current_debuff = debuff
 
 func apply_upgrade(index: int):
-	gun.gun.bullets[index] = Upgrades.apply_upgrade(gun.gun.bullets[index], current_buff)
+	gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_buff)
 	if current_debuff:
-		gun.gun.bullets[index] = Upgrades.apply_upgrade(gun.gun.bullets[index], current_debuff)
+		gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_debuff)

@@ -23,7 +23,7 @@ func shoot() -> Bullet:
 	return null
 
 func reset() -> void:
-	bullets = initial_bullets
+	bullets = initial_bullets.duplicate(true)
 
 func switch_left():
 	bullet_index -= 1

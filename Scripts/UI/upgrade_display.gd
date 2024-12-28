@@ -17,7 +17,7 @@ func load_item() -> void:
 	var data = Upgrades.generate_upgrade()
 	buff = data[0]
 	if data.size() > 1:
-		debuff = data[2]
+		debuff = data[1]
 	load_upgrade()
 
 func load_upgrade() -> void:

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bs60njmy52e8o"]
-
-[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_0mmdq"]
-
-[resource]
-script = ExtResource("1_0mmdq")
-positive = true
-name = &"Deadly Explosion"
-rare = true
