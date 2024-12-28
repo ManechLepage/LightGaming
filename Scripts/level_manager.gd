@@ -8,14 +8,17 @@ extends Node
 
 @onready var gun: GunDisplay = %Gun
 @onready var level_label: Label = %LevelLabel
-
+@onready var next: TextureButton = %TextureButton
 @onready var level: Node2D = %Level
 @onready var game_ui: Control = %GameUI
 @onready var color: ColorRect = %ColorRect
 @onready var shop_1: Control = %Shop1
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
+@onready var labeld: Label = %Label
 @onready var dark: CanvasModulate = %Darkness
+@onready var button: Button = %Button
+@onready var button2: Button = %Button2
 enum Difficulties {
 	EASY,
 	MEDIUM,
@@ -60,6 +63,9 @@ func load_level() -> void:
 	dark.visible = true
 	death = false
 	color.visible = false
+	labeld.visible = false
+	button.visible = false
+	button2.visible = false
 func win_level():
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
@@ -73,6 +79,11 @@ func kill_player():
 	death = true
 	dark.visible = false
 	color.visible = true
+	labeld.visible = true
+	if difficulty % 3 == 0:
+		button2.visible = true
+	else:
+		button.visible = true
 func _on_input_manager_switch_bullet_left() -> void:
 	gun.switch_gun_left()
 
@@ -118,3 +129,13 @@ func apply_upgrade(index: int):
 	gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_buff)
 	if current_debuff:
 		gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_debuff)
+
+
+func _on_button_pressed() -> void:
+	win_level()
+	button.visible = false
+	
+
+func _on_button_2_pressed() -> void:
+	win_level()
+	button2.visible = false
