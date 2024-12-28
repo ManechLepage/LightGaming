@@ -132,10 +132,8 @@ func apply_upgrade(index: int):
 	if current_debuff:
 		gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_debuff)
 
-
 func _on_button_pressed() -> void:
 	win_level()
-
 
 func explode():
 	explosion.play()
