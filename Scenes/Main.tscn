@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://c54705kb4yoo7"]
+[gd_scene load_steps=49 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="AudioStream" uid="uid://b2ccqwgkyfo8k" path="res://Audio/applemax - BackDoorBarry.mp3" id="1_c18r5"]
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
@@ -10,14 +10,15 @@
 [ext_resource type="AudioStream" uid="uid://bc17bjqfb6s7a" path="res://Audio/Merging.ogg" id="4_46smv"]
 [ext_resource type="Script" path="res://Scenes/label.gd" id="4_m37hv"]
 [ext_resource type="AudioStream" uid="uid://cyaax5ia43yeu" path="res://Audio/170144__timgormly__8-bit-explosion2.mp3" id="5_3dcqi"]
+[ext_resource type="AudioStream" uid="uid://csgwqupqnh7b4" path="res://Audio/581078__magnuswaker__flame-loop.wav" id="5_m0bsu"]
 [ext_resource type="AudioStream" uid="uid://cptrpsamkoxa8" path="res://Audio/368203__kermite607__coin-dropped.wav" id="6_p0plh"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
-[ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
+[ext_resource type="Resource" uid="uid://ctch3bntsgmxs" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
 [ext_resource type="Texture2D" uid="uid://dghvn3hrl5ubk" path="res://Graphics/prototype.aseprite" id="9_pk2aw"]
 [ext_resource type="PackedScene" uid="uid://bcvr48f00mrf" path="res://Scenes/bullet.tscn" id="9_t07wy"]
-[ext_resource type="Resource" uid="uid://cxxbdrdxmvb4v" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
+[ext_resource type="Resource" path="res://Resources/Bullet/SplitShot.tres" id="10_bp7su"]
 [ext_resource type="Texture2D" uid="uid://dci73cv116mkq" path="res://Graphics/light_map.aseprite" id="10_ydagp"]
 [ext_resource type="PackedScene" uid="uid://dnyixiutwqc5r" path="res://Scenes/UI/slot.tscn" id="12_2wxyu"]
 [ext_resource type="Script" path="res://Scripts/UI/bullet_slot_manager.gd" id="12_q7sty"]
@@ -68,39 +69,38 @@ texture_filter = 1
 unique_name_in_owner = true
 stream = ExtResource("1_c18r5")
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("2_e30y6")
 volume_db = -15.0
-bus = &"SFX"
 
 [node name="ShootEmpty" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("3_dvr0o")
 volume_db = -10.0
-bus = &"SFX"
 
 [node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("4_46smv")
 volume_db = -5.0
-bus = &"SFX"
 
 [node name="Explosion" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("5_3dcqi")
 volume_db = -15.0
-bus = &"SFX"
 
 [node name="Money" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("6_p0plh")
 volume_db = -10.0
 pitch_scale = 0.8
-bus = &"SFX"
+
+[node name="Flamethrow" type="AudioStreamPlayer2D" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("5_m0bsu")
+volume_db = -15.0
 
 [node name="InputManager" type="Node" parent="."]
 unique_name_in_owner = true

@@ -12,7 +12,7 @@ var obstacles: TileMapLayer
 
 @onready var light: PointLight2D = %EndLight
 @onready var walk: AudioStreamPlayer = %Walk
-
+@onready var Flamethrow: AudioStreamPlayer2D = %Flamethrow
 
 var player_position: Vector2i
 var turns = 1
@@ -159,7 +159,8 @@ func place_random_obstacles(difficulty: int) -> void:
 	for tile in obstacles.get_used_cells():
 		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0) or obstacles.get_cell_atlas_coords(tile) == Vector2i(4, 0):
 			call_deferred("duplicate_light",tile,1)
-			
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(4, 0):
+			sigma = true
 func flamethrower(position: Vector2i):
 	var pos: Vector2i
 	var l = []
@@ -211,7 +212,9 @@ func flamethrower(position: Vector2i):
 	for p in d:
 		obstacles.set_cell(p,0,Vector2i(6,3))
 		duplicate_light(p,1)
+var sigma = false
 func flaming():
+	Flamethrow.stop()
 	if turns % 5 == 3:
 		for tile in obstacles.get_used_cells():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,0):
@@ -225,6 +228,8 @@ func flaming():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,1):
 				obstacles.set_cell(tile, 0, Vector2i(5,1))
 				flamethrower(tile)
+			if sigma == true:
+				Flamethrow.play()
 	elif turns % 5 == 1:
 		for tile in obstacles.get_used_cells():
 			if obstacles.get_cell_atlas_coords(tile) == Vector2i(5,1):
