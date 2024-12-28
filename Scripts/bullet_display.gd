@@ -49,6 +49,7 @@ func is_killed() -> bool:
 
 func kill_bullet() -> void:
 	cpu_particles_2d.restart()
+	GlobalValues.level_manager.explode()
 	for i in range(bullet.split_quantity):
 		GlobalValues.gun_manager.generate_split_bullet(position, i)
 	if bullet.explosion_range > 0:

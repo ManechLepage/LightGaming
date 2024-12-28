@@ -18,14 +18,17 @@ extends Node
 @onready var dark: CanvasModulate = %Darkness
 @onready var next_level: Control = %NextLevel
 @onready var button: Button = %Button
+@onready var explosion: AudioStreamPlayer = %Explosion
+@onready var money: AudioStreamPlayer = %Money
+
 enum Difficulties {
 	EASY,
 	MEDIUM,
 	HARD
 }
 
-var gear_quantity: int = 2
-var bullet_quantity: int = 2
+var gear_quantity: int = 0
+var bullet_quantity: int = 0
 
 var current_bullet_index = 0
 var difficulty: int = 0
@@ -63,7 +66,6 @@ func load_level() -> void:
 	death = false
 	color.visible = false
 	next_level.visible = false
-	tile_manager.sigma = true
 	tile_manager.remove()
 func win_level():
 	tile_manager.turns = 1
@@ -121,6 +123,7 @@ func quit_shop() -> void:
 	load_level()
 
 func set_upgrade(buff: Upgrade, debuff: Upgrade):
+	money.play()
 	current_buff = buff
 	current_debuff = debuff
 
@@ -129,6 +132,8 @@ func apply_upgrade(index: int):
 	if current_debuff:
 		gun.gun.initial_bullets[index] = Upgrades.apply_upgrade(gun.gun.initial_bullets[index], current_debuff)
 
-
 func _on_button_pressed() -> void:
 	win_level()
+
+func explode():
+	explosion.play()
