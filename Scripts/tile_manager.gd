@@ -61,15 +61,16 @@ func _input(event: InputEvent) -> void:
 			new_position += Vector2i(1, 0)
 			s = true
 		
-		if can_move(new_position) and input_manager.gameState == input_manager.GameState.ACTIVE:
-			player_position = new_position
-			if s:
-				walk.pitch_scale = randf_range(0.8, 2.0)
-				walk.play()
-				turns += 1
-				print(turns)
-				s = false
-				flaming()
+		if input_manager.gameState == input_manager.GameState.ACTIVE:
+			if can_move(new_position):
+				player_position = new_position
+				if s:
+					walk.pitch_scale = randf_range(0.8, 2.0)
+					walk.play()
+					turns += 1
+					print(turns)
+					s = false
+					flaming()
 
 func can_move(position: Vector2i) -> bool:
 	if bullets.get_child_count() > 0:

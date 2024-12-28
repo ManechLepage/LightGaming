@@ -45,7 +45,7 @@ signal update_bullets(value: int)
 signal hurt
 
 func _ready() -> void:
-	load_level()
+	call_deferred("load_level")
 	update_gear.emit(gear_quantity)
 
 func load_level() -> void:
@@ -67,6 +67,7 @@ func load_level() -> void:
 	color.visible = false
 	next_level.visible = false
 	tile_manager.remove()
+
 func win_level():
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
@@ -74,17 +75,22 @@ func win_level():
 	else:
 		load_level()
 var death = false
+
 func kill_player():
 	health -= 1
-	hurt.emit()
-	death = true
-	dark.visible = false
-	color.visible = true
-	next_level.visible = true
-	if difficulty % 3 == 0:
-		button.text = "Enter Shop"
+	if health == 0:
+		get_tree().quit()
 	else:
-		button.text = "Next Level"
+		hurt.emit()
+		death = true
+		dark.visible = false
+		color.visible = true
+		next_level.visible = true
+		if difficulty % 3 == 0:
+			button.text = "Enter Shop"
+		else:
+			button.text = "Next Level"
+
 func _on_input_manager_switch_bullet_left() -> void:
 	gun.switch_gun_left()
 
