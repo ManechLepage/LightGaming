@@ -9,7 +9,7 @@ extends Control
 func load_shop():
 	for child in items.get_children():
 		child.load_item()
-	shopkeep2.play()
+	shopkeep1.play()
 
 func hide_choices():
 	items.visible = false
