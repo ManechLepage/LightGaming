@@ -72,7 +72,12 @@ func can_move(position: Vector2i) -> bool:
 	if not manage_interaction(position):
 		return false
 	return true
-
+func remove():
+	for tile in obstacles.get_used_cells():
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(2, 0):
+			if randi() & 1:
+				obstacles.erase_cell(tile)
+				print("huzz")
 func manage_interaction(position: Vector2i) -> bool:
 	if position in obstacles.get_used_cells():
 		var tile: TileData = obstacles.get_cell_tile_data(position)

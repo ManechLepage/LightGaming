@@ -64,7 +64,7 @@ func load_level() -> void:
 	death = false
 	color.visible = false
 	next_level.visible = false
-	
+	tile_manager.remove()
 func win_level():
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
