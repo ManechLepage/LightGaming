@@ -59,6 +59,10 @@ script = ExtResource("7_atwix")
 unique_name_in_owner = true
 script = ExtResource("1_uvd5o")
 
+[node name="ColorRect" type="ColorRect" parent="LevelManager"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Level" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -105,6 +109,7 @@ texture_scale = 0.2
 unique_name_in_owner = true
 
 [node name="Darkness" type="CanvasModulate" parent="Level"]
+unique_name_in_owner = true
 color = Color(0, 0, 0, 1)
 
 [node name="Lights" type="Node2D" parent="Level"]

@@ -45,26 +45,27 @@ func _input(event: InputEvent) -> void:
 		level_manager.win_level()
 	var new_position: Vector2i = player_position
 	var s = false
-	if Input.is_action_just_pressed("Up"):
-		new_position -= Vector2i(0, 1)
-		s = true
-	elif Input.is_action_just_pressed("Down"):
-		new_position += Vector2i(0, 1)
-		s = true
-	elif Input.is_action_just_pressed("Left"):
-		new_position -= Vector2i(1, 0)
-		s = true
-	elif Input.is_action_just_pressed("Right"):
-		new_position += Vector2i(1, 0)
-		s = true
-	
-	if can_move(new_position):
-		player_position = new_position
-		if s:
-			turns += 1
-			print(turns)
-			s = false
-			flaming()
+	if not level_manager.death:
+		if Input.is_action_just_pressed("Up"):
+			new_position -= Vector2i(0, 1)
+			s = true
+		elif Input.is_action_just_pressed("Down"):
+			new_position += Vector2i(0, 1)
+			s = true
+		elif Input.is_action_just_pressed("Left"):
+			new_position -= Vector2i(1, 0)
+			s = true
+		elif Input.is_action_just_pressed("Right"):
+			new_position += Vector2i(1, 0)
+			s = true
+		
+		if can_move(new_position):
+			player_position = new_position
+			if s:
+				turns += 1
+				print(turns)
+				s = false
+				flaming()
 func can_move(position: Vector2i) -> bool:
 	if bullets.get_child_count() > 0:
 		return false

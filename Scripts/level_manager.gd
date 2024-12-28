@@ -15,7 +15,7 @@ extends Node
 @onready var shop_1: Control = %Shop1
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
-
+@onready var dark: CanvasModulate = %Darkness
 enum Difficulties {
 	EASY,
 	MEDIUM,
@@ -57,18 +57,20 @@ func load_level() -> void:
 	tile_manager.load_obstacles(level)
 	tile_manager.load_end_light()
 	tile_manager.place_random_obstacles(difficulty)
-
+	dark.visible = true
+	death = false
 func win_level():
 	tile_manager.turns = 1
 	if difficulty % 3 == 0:
 		load_shop()
 	else:
 		load_level()
-
+var death = false
 func kill_player():
 	health -= 1
 	hurt.emit()
-	win_level()
+	death = true
+	dark.visible = false
 
 
 func _on_input_manager_switch_bullet_left() -> void:
