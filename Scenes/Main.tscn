@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://c54705kb4yoo7"]
+[gd_scene load_steps=50 format=4 uid="uid://c54705kb4yoo7"]
 
 [ext_resource type="AudioStream" uid="uid://b2ccqwgkyfo8k" path="res://Audio/applemax - BackDoorBarry.mp3" id="1_c18r5"]
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://csgwqupqnh7b4" path="res://Audio/581078__magnuswaker__flame-loop.wav" id="5_m0bsu"]
 [ext_resource type="AudioStream" uid="uid://cptrpsamkoxa8" path="res://Audio/368203__kermite607__coin-dropped.wav" id="6_p0plh"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="7_atwix"]
+[ext_resource type="AudioStream" uid="uid://bmjdra3l7rh2n" path="res://Audio/505751__thehorriblejoke__computer-breaking-sound.wav" id="7_jxnku"]
 [ext_resource type="Script" path="res://Scripts/gunDisplay.gd" id="7_uca61"]
 [ext_resource type="Texture2D" uid="uid://bcgj22fkg84tn" path="res://Graphics/Environment/Environment1.aseprite" id="8_pamyw"]
 [ext_resource type="Resource" uid="uid://c6nvvme4sd0ig" path="res://Resources/Guns/Revolver.tres" id="8_wjyx6"]
@@ -68,6 +69,7 @@ texture_filter = 1
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("1_c18r5")
+volume_db = -5.0
 autoplay = true
 parameters/looping = true
 
@@ -96,6 +98,12 @@ unique_name_in_owner = true
 stream = ExtResource("6_p0plh")
 volume_db = -10.0
 pitch_scale = 0.8
+
+[node name="Death" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("7_jxnku")
+volume_db = -20.0
+pitch_scale = 0.84
 
 [node name="Flamethrow" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true

@@ -20,6 +20,7 @@ extends Node
 @onready var button: Button = %Button
 @onready var explosion: AudioStreamPlayer = %Explosion
 @onready var money: AudioStreamPlayer = %Money
+@onready var death_sound: AudioStreamPlayer = %Death
 
 enum Difficulties {
 	EASY,
@@ -79,6 +80,7 @@ func win_level():
 var death = false
 
 func kill_player():
+	death_sound.play()
 	health -= 1
 	if health == 0:
 		get_tree().quit()
