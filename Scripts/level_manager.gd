@@ -15,12 +15,6 @@ extends Node
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
 
-enum Difficulties {
-	EASY,
-	MEDIUM,
-	HARD
-}
-
 var gear_quantity: int = 2
 var bullet_quantity: int = 2
 
@@ -30,8 +24,6 @@ var health: int = 3
 
 var current_buff: Upgrade
 var current_debuff: Upgrade
-
-var current_difficulty: Difficulties = Difficulties.MEDIUM
 
 signal change_bullet(index: int)
 signal update_gear(value: int)
