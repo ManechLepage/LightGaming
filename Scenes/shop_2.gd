@@ -1,3 +1,4 @@
+
 extends Control
 
 @onready var items: Control = $Items
@@ -7,7 +8,7 @@ extends Control
 @onready var shopkeep1: AnimatedSprite2D = $shopkeeper1
 @onready var shopkeep2: AnimatedSprite2D = $shopkeeper2
 func load_shop():
-	shopkeep1.play()
+	shopkeep2.play()
 	for child in items.get_children():
 		child.load_item()
 

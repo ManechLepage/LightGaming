@@ -5,7 +5,7 @@ extends Node2D
 @export var bullet_display: PackedScene
 @export var split_shot_bullet: Bullet
 var current_gun: int
-
+@onready var level_manager: LevelManager = %LevelManager
 @onready var bullets: Node2D = %Bullets
 @onready var sprite: Sprite2D = $Sprite
 @onready var shot_position: Node2D = $ShotPosition
@@ -23,23 +23,26 @@ func reset() -> void:
 	load_bullets.emit(gun.bullets)
 
 func shoot():
-	if gun.can_shoot():
-		var bullet_resource: Bullet = gun.shoot()
-		if bullet_resource:
-			var bullet: BulletGraph = bullet_display.instantiate()
-			bullets.add_child(bullet)
-			bullet.load_bullet(bullet_resource, shot_position.global_position, rotation)
-			tile_manager.turns += 1
-			tile_manager.flaming()
-	update_bullets.emit(gun.bullets)
+	if not level_manager.death:
+		if gun.can_shoot():
+			var bullet_resource: Bullet = gun.shoot()
+			if bullet_resource:
+				var bullet: BulletGraph = bullet_display.instantiate()
+				bullets.add_child(bullet)
+				bullet.load_bullet(bullet_resource, shot_position.global_position, rotation)
+				tile_manager.turns += 1
+				tile_manager.flaming()
+		update_bullets.emit(gun.bullets)
 
 func switch_gun_left():
-	gun.switch_left()
-	bullet_slots.select(gun.bullet_index)
+	if not level_manager.death:
+		gun.switch_left()
+		bullet_slots.select(gun.bullet_index)
 
 func switch_gun_right():
-	gun.switch_right()
-	bullet_slots.select(gun.bullet_index)
+	if not level_manager.death:
+		gun.switch_right()
+		bullet_slots.select(gun.bullet_index)
 
 func update_gun():
 	sprite.texture = gun.sprite

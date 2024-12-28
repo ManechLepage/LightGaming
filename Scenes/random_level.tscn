@@ -9,19 +9,19 @@
 [ext_resource type="Script" path="res://Scripts/level.gd" id="6_uh6nt"]
 [ext_resource type="Texture2D" uid="uid://deyulqn4dwval" path="res://Graphics/Environment/Environment6.aseprite" id="7_h2d74"]
 [ext_resource type="Resource" uid="uid://c5sek0urf2avc" path="res://Resources/Levels/Level1.tres" id="7_lmio0"]
-[ext_resource type="Resource" uid="uid://delh0a24p3oue" path="res://Resources/Levels/Level2.tres" id="8_g3ssw"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level2.tres" id="8_g3ssw"]
 [ext_resource type="Texture2D" uid="uid://dodu300dom3pn" path="res://Graphics/Environment/Environment7.aseprite" id="8_qexr2"]
-[ext_resource type="Resource" uid="uid://dbto3khk06mu4" path="res://Resources/Levels/Level3.tres" id="9_exjyb"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level3.tres" id="9_exjyb"]
 [ext_resource type="Texture2D" uid="uid://bjxxddw3nm612" path="res://Graphics/Environment/Environment8.aseprite" id="9_xygiw"]
 [ext_resource type="Texture2D" uid="uid://1phpawxu8sju" path="res://Graphics/Environment/Environment9.aseprite" id="10_bj6xn"]
 [ext_resource type="Resource" uid="uid://di1jjtged2u3d" path="res://Resources/Levels/Level4.tres" id="10_w6hse"]
 [ext_resource type="Texture2D" uid="uid://4tqqnyy8mbyo" path="res://Graphics/Environment/Environment10.aseprite" id="11_56d82"]
-[ext_resource type="Resource" uid="uid://xwyu57ltfttr" path="res://Resources/Levels/Level5.tres" id="17_mdjul"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level5.tres" id="17_mdjul"]
 [ext_resource type="Resource" uid="uid://4prvrrint3am" path="res://Resources/Levels/Level6.tres" id="18_7lg5e"]
-[ext_resource type="Resource" uid="uid://chmyr1qp27cqy" path="res://Resources/Levels/Level7.tres" id="19_afin7"]
-[ext_resource type="Resource" uid="uid://cbcdva0366ung" path="res://Resources/Levels/Level8.tres" id="20_j1781"]
-[ext_resource type="Resource" uid="uid://c8a3oi3vq3ybx" path="res://Resources/Levels/Level9.tres" id="21_evlih"]
-[ext_resource type="Resource" uid="uid://p6n0otie1kek" path="res://Resources/Levels/Level10.tres" id="22_cyfff"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level7.tres" id="19_afin7"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level8.tres" id="20_j1781"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level9.tres" id="21_evlih"]
+[ext_resource type="Resource" path="res://Resources/Levels/Level10.tres" id="22_cyfff"]
 [ext_resource type="Resource" uid="uid://gpux4a0py3od" path="res://Resources/Levels/Level11.tres" id="23_04snn"]
 [ext_resource type="Resource" uid="uid://d3er0c7hy22gc" path="res://Resources/Levels/Level12.tres" id="24_405s8"]
 [ext_resource type="Resource" uid="uid://gu3oftl56jkh" path="res://Resources/Levels/Level13.tres" id="25_0p1oy"]
@@ -37,5 +37,5 @@
 script = ExtResource("1_hpuj5")
 environments = Array[Texture2D]([ExtResource("2_swlcl"), ExtResource("3_cv0rf"), ExtResource("4_xjlgh"), ExtResource("5_jrqxt"), ExtResource("6_kd2f3"), ExtResource("7_h2d74"), ExtResource("8_qexr2"), ExtResource("9_xygiw"), ExtResource("10_bj6xn"), ExtResource("11_56d82")])
 obstacles = Array[ExtResource("6_uh6nt")]([ExtResource("7_lmio0"), ExtResource("8_g3ssw"), ExtResource("9_exjyb"), ExtResource("10_w6hse"), ExtResource("17_mdjul"), ExtResource("18_7lg5e"), ExtResource("19_afin7"), ExtResource("20_j1781"), ExtResource("21_evlih"), ExtResource("22_cyfff"), ExtResource("23_04snn"), ExtResource("24_405s8"), ExtResource("25_0p1oy"), ExtResource("26_q4ll1"), ExtResource("27_rmqqx"), ExtResource("28_u25s8"), ExtResource("29_r1sot"), ExtResource("30_kp0mg"), ExtResource("31_irqyr"), ExtResource("32_18ie7")])
-obstacle_data = Array[Vector2i]([Vector2i(3, 0), Vector2i(-1, -1), Vector2i(0, 0), Vector2i(2, 1), Vector2i(2, 0), Vector2i(1, 1), Vector2i(0, 1)])
-obstacle_difficulty = Array[float]([0.2, 0.3, 0.5, 0.4, 0.3, 0.2, 0.1])
+obstacle_data = Array[Vector2i]([Vector2i(3, 0), Vector2i(-1, -1), Vector2i(0, 0), Vector2i(2, 1), Vector2i(2, 0), Vector2i(1, 1), Vector2i(0, 1), Vector2i(4, 0)])
+obstacle_difficulty = Array[float]([0.2, 0.3, 0.5, 0.4, 0.3, 0.2, 0.1, 0.2])
