@@ -4,13 +4,13 @@ extends Node2D
 @export var gun: Gun
 @export var bullet_display: PackedScene
 @export var split_shot_bullet: Bullet
-
 var current_gun: int
 
 @onready var bullets: Node2D = %Bullets
 @onready var sprite: Sprite2D = $Sprite
 @onready var shot_position: Node2D = $ShotPosition
 @onready var bullet_slots: Control = %BulletSlots
+@onready var tile_manager: Node2D = %TileManager
 
 signal load_bullets(bullets: Array[Bullet])
 signal update_bullets(bullets: Array[Bullet])
@@ -29,6 +29,8 @@ func shoot():
 			var bullet: BulletGraph = bullet_display.instantiate()
 			bullets.add_child(bullet)
 			bullet.load_bullet(bullet_resource, shot_position.global_position, rotation)
+			tile_manager.turns += 1
+			tile_manager.flaming()
 	update_bullets.emit(gun.bullets)
 
 func switch_gun_left():

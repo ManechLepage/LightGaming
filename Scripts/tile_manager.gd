@@ -13,7 +13,7 @@ var obstacles: TileMapLayer
 
 
 var player_position: Vector2i
-
+var turns = 1
 # Interactions
 # -1: Goal
 # 0: Wall
@@ -42,19 +42,27 @@ func update_gun():
 
 func _input(event: InputEvent) -> void:
 	var new_position: Vector2i = player_position
+	var s = false
 	if Input.is_action_just_pressed("Up"):
 		new_position -= Vector2i(0, 1)
+		s = true
 	elif Input.is_action_just_pressed("Down"):
 		new_position += Vector2i(0, 1)
+		s = true
 	elif Input.is_action_just_pressed("Left"):
 		new_position -= Vector2i(1, 0)
+		s = true
 	elif Input.is_action_just_pressed("Right"):
 		new_position += Vector2i(1, 0)
+		s = true
 	
 	if can_move(new_position):
 		player_position = new_position
-
-
+		if s:
+			turns += 1
+			print(turns)
+			s = false
+			flaming()
 func can_move(position: Vector2i) -> bool:
 	if bullets.get_child_count() > 0:
 		return false
@@ -73,7 +81,7 @@ func manage_interaction(position: Vector2i) -> bool:
 			return false
 		elif tile_interaction == 0 or tile_interaction == 3:
 			return false
-		elif tile_interaction == 1:
+		elif tile_interaction == 1 or tile_interaction == 4:
 			level_manager.kill_player()
 			return false
 		elif tile_interaction == 2:
@@ -85,21 +93,22 @@ func manage_interaction(position: Vector2i) -> bool:
 func is_bullet_killed(position: Vector2, offset: Vector2i) -> bool:
 	var tile_position: Vector2i = obstacles.local_to_map(position) + offset
 	if obstacles.get_cell_tile_data(tile_position):
-		if obstacles.get_cell_tile_data(tile_position).get_custom_data("Interaction") == 3:
+		if obstacles.get_cell_tile_data(tile_position).get_custom_data("Interaction") == 3 or obstacles.get_cell_tile_data(tile_position).get_custom_data("Interaction") == 4:
 			destroy_gear(tile_position)
 		return obstacles.get_cell_tile_data(tile_position).get_custom_data("KillBullet")
 	return false
 
 var lights = []
-func duplicate_light(position: Vector2i):
+func duplicate_light(position: Vector2i, energy):
 	var new_light = light.duplicate()
 	new_light.position = obstacles.map_to_local(position)
+	new_light.energy = energy
 	add_child(new_light)
 	lights.append(new_light)
 
 func destroy_gear(position: Vector2i) -> void:
 	obstacles.set_cell(position, 0, Vector2i(3, 1))
-	duplicate_light(position)
+	duplicate_light(position, 0.5)
 func destroy_light(position: Vector2i):
 	for l in lights:
 		if obstacles.local_to_map(l.position) == position:
@@ -133,6 +142,78 @@ func place_random_obstacles(difficulty: int) -> void:
 			else:
 				obstacles.set_cell(tile, 0, atlas_coords)
 	for tile in obstacles.get_used_cells():
-		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0):
-			call_deferred("duplicate_light",tile)
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0) or obstacles.get_cell_atlas_coords(tile) == Vector2i(4, 0):
+			call_deferred("duplicate_light",tile,1)
 			
+func flamethrower(position: Vector2i):
+	var pos: Vector2i
+	var l = []
+	var r = []
+	var u = []
+	var d = []
+	pos = position
+	var switch: bool
+	switch = true
+	while switch:
+		if pos + Vector2i(1,0) not in obstacles.get_used_cells():
+			pos += Vector2i(1,0)
+			r.append(pos)
+		else:
+			switch = false
+	switch = true
+	pos = position
+	while switch:
+		if pos + Vector2i(-1,0) not in obstacles.get_used_cells():
+			pos += Vector2i(-1,0)
+			l.append(pos)
+		else:
+			switch = false
+	switch = true
+	pos = position
+	while switch:
+		if pos + Vector2i(0,-1) not in obstacles.get_used_cells():
+			pos += Vector2i(0,-1)
+			u.append(pos)
+		else:
+			switch = false
+	switch = true
+	pos = position
+	while switch:
+		if pos + Vector2i(0,1) not in obstacles.get_used_cells():
+			pos += Vector2i(0,1)
+			d.append(pos)
+		else:
+			switch = false
+	for p in r:
+		obstacles.set_cell(p,0,Vector2i(6,0))
+		duplicate_light(p,1)
+	for p in l:
+		obstacles.set_cell(p,0,Vector2i(6,2))
+		duplicate_light(p,1)
+	for p in u:
+		obstacles.set_cell(p,0,Vector2i(6,1))
+		duplicate_light(p,1)
+	for p in d:
+		obstacles.set_cell(p,0,Vector2i(6,3))
+		duplicate_light(p,1)
+func flaming():
+	if turns % 5 == 3:
+		for tile in obstacles.get_used_cells():
+			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,0):
+				obstacles.set_cell(tile, 0, Vector2i(5,0))
+	elif turns % 5 == 4:
+		for tile in obstacles.get_used_cells():
+			if obstacles.get_cell_atlas_coords(tile) == Vector2i(5,0):
+				obstacles.set_cell(tile, 0, Vector2i(4,1))
+	elif turns != 0 and turns % 5 == 0:
+		for tile in obstacles.get_used_cells():
+			if obstacles.get_cell_atlas_coords(tile) == Vector2i(4,1):
+				obstacles.set_cell(tile, 0, Vector2i(5,1))
+				flamethrower(tile)
+	elif turns % 5 == 1:
+		for tile in obstacles.get_used_cells():
+			if obstacles.get_cell_atlas_coords(tile) == Vector2i(5,1):
+				obstacles.set_cell(tile, 0, Vector2i(4,0))
+			elif obstacles.get_cell_atlas_coords(tile) in [Vector2i(6,0),Vector2i(6,1),Vector2i(6,2),Vector2i(6,3)]:
+				obstacles.erase_cell(tile)
+				destroy_light(tile)

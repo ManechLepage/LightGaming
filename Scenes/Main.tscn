@@ -96,9 +96,8 @@ position = Vector2(16.5, 10)
 
 [node name="PointLight2D" type="PointLight2D" parent="Level/Gun"]
 position = Vector2(4, -2)
-energy = 0.8
 texture = ExtResource("10_ydagp")
-texture_scale = 0.18
+texture_scale = 0.2
 
 [node name="Bullets" type="Node2D" parent="Level"]
 unique_name_in_owner = true
