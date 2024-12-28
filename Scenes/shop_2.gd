@@ -4,8 +4,8 @@ extends Control
 @onready var label: Label = $Label
 @onready var level_manager: LevelManager = %LevelManager
 @onready var apply_upgrade: Control = %ApplyUpgrade
-@onready var shopkeep1: AnimatedSprite2D = $shopkeeper1
-@onready var shopkeep2: AnimatedSprite2D = $shopkeeper2
+@onready var shopkeep1: AnimatedSprite2D = %shopkeeper1
+@onready var shopkeep2: AnimatedSprite2D = %shopkeeper2
 func load_shop():
 	shopkeep2.play()
 	for child in items.get_children():

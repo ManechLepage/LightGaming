@@ -41,6 +41,8 @@ func update_gun():
 	gun.update_gun()
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Win"):
+		level_manager.win_level()
 	var new_position: Vector2i = player_position
 	var s = false
 	if Input.is_action_just_pressed("Up"):

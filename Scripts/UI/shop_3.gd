@@ -5,9 +5,8 @@ extends Control
 @onready var level_manager: LevelManager = %LevelManager
 @onready var shopkeep: AnimatedSprite2D = %shopkeeper3
 func load_shop():
-	shopkeep.play()
 	upgrade.load_item()
-
+	shopkeep.play()
 func hide_choices():
 	upgrade.visible = false
 	apply_upgrade.visible = true
