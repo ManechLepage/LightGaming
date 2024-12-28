@@ -21,3 +21,7 @@ func _input(event: InputEvent) -> void:
 		switch_bullet_left.emit()
 	if Input.is_action_just_pressed("SwitchBulletRight"):
 		switch_bullet_right.emit()
+
+
+func hide_choices() -> void:
+	pass # Replace with function body.

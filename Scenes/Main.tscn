@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cc7bn0y1h6gkn"]
+[gd_scene load_steps=37 format=4 uid="uid://cc7bn0y1h6gkn"]
 
 [ext_resource type="Script" path="res://Scripts/tile_manager.gd" id="1_hlre7"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_uvd5o"]
@@ -28,8 +28,13 @@
 [ext_resource type="Texture2D" uid="uid://4ft4wlap7oi2" path="res://Graphics/shop2.aseprite" id="25_581fu"]
 [ext_resource type="PackedScene" uid="uid://dccjsnq263bw8" path="res://Scenes/UI/upgrade.tscn" id="26_cfyd6"]
 [ext_resource type="PackedScene" uid="uid://bhjkmnru1fss5" path="res://Graphics/shopkeeper2.aseprite" id="26_v3jed"]
+[ext_resource type="Texture2D" uid="uid://csvxda7ly2pws" path="res://Graphics/UI/exit_button.aseprite" id="27_1xsnh"]
 [ext_resource type="Texture2D" uid="uid://bmv0bgn57nwwn" path="res://Graphics/shop3.aseprite" id="27_bynh2"]
 [ext_resource type="PackedScene" uid="uid://b3on4wxox7ddv" path="res://Graphics/shopkeeper3.aseprite" id="28_u6s4g"]
+[ext_resource type="Script" path="res://Scripts/UI/apply_upgrade.gd" id="32_30w15"]
+[ext_resource type="Texture2D" uid="uid://4a7ha3nb3scw" path="res://Graphics/Bullets/bullet1.aseprite" id="32_w0c8d"]
+[ext_resource type="Texture2D" uid="uid://keo1m6b2oxso" path="res://Graphics/Bullets/bullet2.aseprite" id="33_tvlhm"]
+[ext_resource type="Texture2D" uid="uid://cofi02ecdd6iy" path="res://Graphics/Bullets/bullet3.aseprite" id="34_inumj"]
 
 [sub_resource type="Environment" id="Environment_0cl2t"]
 background_mode = 3
@@ -44,9 +49,10 @@ glow_hdr_luminance_cap = 17.3
 texture_filter = 1
 
 [node name="InputManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("7_atwix")
 
-[node name="LevelManager" type="Node" parent="."]
+[node name="LevelManager" type="Node" parent="." groups=["Level"]]
 unique_name_in_owner = true
 script = ExtResource("1_uvd5o")
 
@@ -121,98 +127,6 @@ zoom = Vector2(2, 2)
 environment = SubResource("Environment_0cl2t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Money" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Gears" type="Control" parent="CanvasLayer/Money"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -94.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = 46.0
-grow_horizontal = 0
-script = ExtResource("18_qbgws")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Money/Gears"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("18_mslhg")
-
-[node name="Label" type="Label" parent="CanvasLayer/Money/Gears"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -9.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("19_eowuw")
-theme_override_font_sizes/font_size = 60
-text = "0"
-vertical_alignment = 1
-
-[node name="Bullets" type="Control" parent="CanvasLayer/Money"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -94.0
-offset_top = 45.0
-offset_right = -6.0
-offset_bottom = 85.0
-grow_horizontal = 0
-script = ExtResource("21_d05cl")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Money/Bullets"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("22_w2ybf")
-
-[node name="Label" type="Label" parent="CanvasLayer/Money/Bullets"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -9.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("19_eowuw")
-theme_override_font_sizes/font_size = 60
-text = "0"
-vertical_alignment = 1
 
 [node name="GameUI" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -315,6 +229,7 @@ text = "Level - 1"
 
 [node name="Shop1" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -358,6 +273,7 @@ offset_right = -484.0
 offset_bottom = -241.0
 grow_horizontal = 0
 grow_vertical = 0
+bullet_price = true
 
 [node name="Upgrade2" parent="CanvasLayer/Shop1/Items" instance=ExtResource("26_cfyd6")]
 layout_mode = 1
@@ -372,6 +288,7 @@ offset_right = -343.0
 offset_bottom = -241.0
 grow_horizontal = 0
 grow_vertical = 0
+bullet_price = true
 
 [node name="Upgrade3" parent="CanvasLayer/Shop1/Items" instance=ExtResource("26_cfyd6")]
 layout_mode = 1
@@ -386,6 +303,7 @@ offset_right = -204.0
 offset_bottom = -241.0
 grow_horizontal = 0
 grow_vertical = 0
+bullet_price = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Shop1"]
 layout_mode = 1
@@ -403,9 +321,24 @@ theme_override_fonts/font = ExtResource("19_eowuw")
 theme_override_font_sizes/font_size = 60
 text = "1 Bullet each"
 
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/Shop1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -51.0
+offset_right = -61.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("27_1xsnh")
+
 [node name="Shop2" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -413,6 +346,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("23_x0loj")
 
 [node name="Background" type="TextureRect" parent="CanvasLayer/Shop2"]
 layout_mode = 1
@@ -426,6 +360,94 @@ texture = ExtResource("25_581fu")
 [node name="shopkeeper2" parent="CanvasLayer/Shop2" instance=ExtResource("26_v3jed")]
 position = Vector2(362, 293)
 scale = Vector2(3.22, 3.22)
+
+[node name="Items" type="Control" parent="CanvasLayer/Shop2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 185.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrade" parent="CanvasLayer/Shop2/Items" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -612.0
+offset_top = -381.0
+offset_right = -484.0
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 0
+gear_price = true
+
+[node name="Upgrade2" parent="CanvasLayer/Shop2/Items" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -471.0
+offset_top = -381.0
+offset_right = -343.0
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 0
+gear_price = true
+
+[node name="Upgrade3" parent="CanvasLayer/Shop2/Items" instance=ExtResource("26_cfyd6")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -332.0
+offset_top = -381.0
+offset_right = -204.0
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 0
+gear_price = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Shop2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 390.0
+offset_right = 375.0
+offset_bottom = 444.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "1 Gear each"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/Shop2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -51.0
+offset_right = -61.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("27_1xsnh")
 
 [node name="Shop3" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -453,6 +475,190 @@ scale = Vector2(6.09862, 6.1717)
 frame = 8
 frame_progress = 0.928563
 
+[node name="ApplyUpgrade" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -658.0
+offset_top = -59.0
+offset_right = -219.0
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("32_30w15")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ApplyUpgrade"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bullet1" type="TextureRect" parent="CanvasLayer/ApplyUpgrade"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.039
+anchor_right = 0.33
+anchor_bottom = 0.948
+offset_left = -0.146
+offset_top = 0.033
+offset_right = 0.12999
+offset_bottom = -0.0440063
+texture = ExtResource("32_w0c8d")
+
+[node name="Button" type="Button" parent="CanvasLayer/ApplyUpgrade/Bullet1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bullet2" type="TextureRect" parent="CanvasLayer/ApplyUpgrade"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.039
+anchor_right = 0.33
+anchor_bottom = 0.948
+offset_left = 146.854
+offset_top = 0.033
+offset_right = 147.13
+offset_bottom = -0.0440063
+texture = ExtResource("33_tvlhm")
+
+[node name="Button" type="Button" parent="CanvasLayer/ApplyUpgrade/Bullet2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bullet3" type="TextureRect" parent="CanvasLayer/ApplyUpgrade"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.039
+anchor_right = 0.33
+anchor_bottom = 0.948
+offset_left = 292.854
+offset_top = 0.033
+offset_right = 293.13
+offset_bottom = -0.0440063
+texture = ExtResource("34_inumj")
+
+[node name="Button" type="Button" parent="CanvasLayer/ApplyUpgrade/Bullet3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.882
+anchor_right = 1.0
+anchor_bottom = 0.15
+offset_left = -0.0640259
+offset_bottom = -0.200005
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gears" type="Control" parent="CanvasLayer/Money"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 46.0
+grow_horizontal = 0
+script = ExtResource("18_qbgws")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Money/Gears"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("18_mslhg")
+
+[node name="Label" type="Label" parent="CanvasLayer/Money/Gears"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -9.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+vertical_alignment = 1
+
+[node name="Bullets" type="Control" parent="CanvasLayer/Money"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 45.0
+offset_right = -6.0
+offset_bottom = 85.0
+grow_horizontal = 0
+script = ExtResource("21_d05cl")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Money/Bullets"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("22_w2ybf")
+
+[node name="Label" type="Label" parent="CanvasLayer/Money/Bullets"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -9.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_eowuw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+vertical_alignment = 1
+
 [connection signal="shoot" from="InputManager" to="Level/Gun" method="shoot"]
 [connection signal="switch_bullet_left" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_left"]
 [connection signal="switch_bullet_right" from="InputManager" to="LevelManager" method="_on_input_manager_switch_bullet_right"]
@@ -461,3 +667,16 @@ frame_progress = 0.928563
 [connection signal="update_gear" from="LevelManager" to="CanvasLayer/Money/Gears" method="_on_level_manager_update_gear"]
 [connection signal="load_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_load_bullets"]
 [connection signal="update_bullets" from="Level/Gun" to="CanvasLayer/GameUI/BulletSlots" method="_on_gun_update_bullets"]
+[connection signal="buy" from="CanvasLayer/Shop1/Items/Upgrade" to="CanvasLayer/Shop1" method="hide_choices"]
+[connection signal="buy" from="CanvasLayer/Shop1/Items/Upgrade2" to="CanvasLayer/Shop1" method="hide_choices"]
+[connection signal="buy" from="CanvasLayer/Shop1/Items/Upgrade3" to="CanvasLayer/Shop1" method="hide_choices"]
+[connection signal="pressed" from="CanvasLayer/Shop1/ExitButton" to="CanvasLayer/Shop1" method="_on_exit_button_pressed"]
+[connection signal="buy" from="CanvasLayer/Shop2/Items/Upgrade" to="CanvasLayer/Shop2" method="hide_choices"]
+[connection signal="buy" from="CanvasLayer/Shop2/Items/Upgrade2" to="CanvasLayer/Shop2" method="hide_choices"]
+[connection signal="buy" from="CanvasLayer/Shop2/Items/Upgrade3" to="CanvasLayer/Shop2" method="hide_choices"]
+[connection signal="pressed" from="CanvasLayer/Shop2/ExitButton" to="CanvasLayer/Shop2" method="_on_exit_button_pressed"]
+[connection signal="apply_upgrade" from="CanvasLayer/ApplyUpgrade" to="CanvasLayer/Shop1" method="_on_apply_upgrade_apply_upgrade"]
+[connection signal="apply_upgrade" from="CanvasLayer/ApplyUpgrade" to="CanvasLayer/Shop2" method="_on_apply_upgrade_apply_upgrade"]
+[connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet1/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet2/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button1_pressed"]
+[connection signal="pressed" from="CanvasLayer/ApplyUpgrade/Bullet3/Button" to="CanvasLayer/ApplyUpgrade" method="_on_button2_pressed"]

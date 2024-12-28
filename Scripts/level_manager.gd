@@ -1,6 +1,8 @@
 class_name LevelManager
 extends Node
 
+@onready var input_manager: InputManager = %InputManager
+
 @onready var tile_manager: TileManager = %TileManager
 @onready var environment_light: PointLight2D = %EnvironmentLight
 
@@ -14,8 +16,8 @@ extends Node
 @onready var shop_2: Control = %Shop2
 @onready var shop_3: Control = %Shop3
 
-var gear_quantity: int = 0
-var bullet_quantity: int = 0
+var gear_quantity: int = 2
+var bullet_quantity: int = 2
 
 var current_bullet_index = 0
 var difficulty: int = 0
@@ -65,6 +67,7 @@ func add_gear():
 	update_gear.emit(gear_quantity)
 
 func load_shop() -> void:
+	input_manager.gameState = input_manager.GameState.MENU
 	level.visible = false
 	game_ui.visible = false
 	var shop_index: int = randi_range(1, 3)
@@ -76,6 +79,7 @@ func load_shop() -> void:
 		shop_3.visible = true
 
 func quit_shop() -> void:
+	input_manager.gameState = input_manager.GameState.ACTIVE
 	shop_1.visible = false
 	shop_2.visible = false
 	shop_3.visible = false
