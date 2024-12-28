@@ -132,3 +132,7 @@ func place_random_obstacles(difficulty: int) -> void:
 				obstacles.erase_cell(atlas_coords)
 			else:
 				obstacles.set_cell(tile, 0, atlas_coords)
+	for tile in obstacles.get_used_cells():
+		if obstacles.get_cell_atlas_coords(tile) == Vector2i(3, 0):
+			call_deferred("duplicate_light",tile)
+			
