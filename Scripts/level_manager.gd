@@ -34,8 +34,7 @@ signal hurt
 func _ready() -> void:
 	load_level()
 	update_gear.emit(gear_quantity)
-	
-var random_level_generator = RandomLevelGenerator.new()
+
 func load_level() -> void:
 	for l in tile_manager.lights:
 		l.queue_free()
@@ -44,8 +43,8 @@ func load_level() -> void:
 	level_label.text = "Level - " + str(difficulty)
 	gun.reset()
 	current_bullet_index = 0
-	var level: Level = random_level_generator.get_random_obstacle()
-	environment_light.texture = random_level_generator.get_random_environment()
+	var level: Level = RandomLevel.get_random_obstacle()
+	environment_light.texture = RandomLevel.get_random_environment()
 	tile_manager.set_player(level.player_pos)
 	tile_manager.load_obstacles(level)
 	tile_manager.load_end_light()
